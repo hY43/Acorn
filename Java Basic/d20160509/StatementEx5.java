@@ -13,7 +13,7 @@ public class StatementEx5 {
 		int value = sc.nextInt();
 		// 입력 받은 값 출력
 		System.out.println(value);
-		if(value > 100){ // 조건 분기 문.
+		if(value > 100){ // 조건 분기문.
 			System.out.println("입력된 값이 100보다 크다."); // if 내 조건문을 만족한다면(value>100) "입력된 값이 100보다 크다." 문자열 출력.
 		}else{
 			System.out.println("입력된 값이 100보다 작다."); // if 내 조건문을 만족하지 않는다면(value<=100) "입력된 값이 100보다 작다." 문자열 출력
