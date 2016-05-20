@@ -20,7 +20,7 @@ public class Bank {
 	/* Member Method */
 	public void send(Bank user, int money)
 	{
-		if(this.bankName != user.bankName)
+		if(this.bankName.equals(user.bankName))
 		{
 			this.balance -= 500;
 			this.balance -= money;
