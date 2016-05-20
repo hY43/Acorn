@@ -5,34 +5,34 @@ public class Bank {
 	String bankName;
 	String name;
 	int deposit;
-	Bank(){}
-	Bank(String account, String bankName, String name, int deposit)
+	public Bank(){}
+	public Bank(String account, String bankName, String name, int deposit)
 	{
 		this.account = account;
 		this.bankName = bankName;
 		this.name = name;
 		this.deposit = deposit;
 	}
-	void send(Bank user, int money)
+	public void send(Bank user, int money)
 	{
 		if(this.bankName != user.bankName)
 		{
 			this.deposit -= 500;
 			this.deposit -= money;
 			user.deposit += money;
-			System.out.println("Å¸Çà °Å·¡¿¡´Â ¼ö¼ö·á 500¿øÀÌ ºÙ½À´Ï´Ù.");
-			System.out.println("[" + name + "] °èÁÂ¹øÈ£(" + account + ") ÀÜ¾×: " + this.deposit);
+			System.out.println("íƒ€í–‰ ê±°ë˜ì—ëŠ” ìˆ˜ìˆ˜ë£Œ 500ì›ì´ ë¶™ìŠµë‹ˆë‹¤.");
+			System.out.println("[" + name + "] ê³„ì¢Œë²ˆí˜¸(" + account + ") ì”ì•¡: " + this.deposit);
 		}
 		else
 		{
 			this.deposit -= money;
 			user.deposit += money;
-			System.out.println("[" + name + "] °èÁÂ¹øÈ£(" + account + ") ÀÜ¾×: " + this.deposit);
+			System.out.println("[" + name + "] ê³„ì¢Œë²ˆí˜¸(" + account + ") ì”ì•¡: " + this.deposit);
 		}
 	}
-	void print()
+	public void print()
 	{
-		System.out.println("[" + this.name + "] °èÁÂ¹øÈ£(" + this.account + ") ÀÜ¾×: " + this.deposit);
+		System.out.println("[" + this.name + "] ê³„ì¢Œë²ˆí˜¸(" + this.account + ") ì”ì•¡: " + this.deposit);
 	}
 }
 
