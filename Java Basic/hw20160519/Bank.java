@@ -1,10 +1,13 @@
 package hw20160519;
 
 public class Bank {
+	/* Member Variable */
 	String account;
 	String bankName;
 	String name;
 	int deposit;
+	
+	/* Constructor */
 	public Bank(){}
 	public Bank(String account, String bankName, String name, int deposit)
 	{
@@ -13,6 +16,8 @@ public class Bank {
 		this.name = name;
 		this.deposit = deposit;
 	}
+	
+	/* Member Method */
 	public void send(Bank user, int money)
 	{
 		if(this.bankName != user.bankName)
