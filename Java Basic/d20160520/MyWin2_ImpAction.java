@@ -23,7 +23,7 @@ public class MyWin2_ImpAction extends Frame implements ActionListener {
 		// 2) Listener 부착.
 		// Handler는 ActionListener 인터페이스를 구현한 클래스.
 
-		btn.addActionListener(this);
+		btn.addActionListener(this); // Event Source인 버튼에 ActionListener 추가.
 		
 		add(btn); // Window 컴포넌트에 btn 컨포넌트를 담는다.
 		setVisible(true); // Window 창 보이도록 변경.(다 완성된 창을 한번에 보여주기 위해 일반적으로 setVisible을 가장 마지막에 둔다.)
@@ -31,12 +31,13 @@ public class MyWin2_ImpAction extends Frame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
-		for(int i=1;i<=9;i++)
+		// 직접 ActionListener 구현.
+		for(int i=1;i<=9;i++) // 콘솔창에 3단 출력.
 		{
 			System.out.println("3 * " + i + " = " + (3*i));
 		}
 		System.out.println("종료합니다.");
-		System.exit(0);
+		System.exit(0); // 3단 출력 후 프로그램 종료
 	}
 	
 	public static void main(String[] args)

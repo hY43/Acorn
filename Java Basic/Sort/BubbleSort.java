@@ -1,4 +1,4 @@
-package Algorithm;
+package Sort;
 
 // BubbleSort Class Start.
 public class BubbleSort {

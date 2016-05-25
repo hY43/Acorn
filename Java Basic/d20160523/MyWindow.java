@@ -15,7 +15,7 @@ public class MyWindow extends Frame implements WindowListener{
 		setVisible(true);
 		// Event Source: window 창
 		// window의 동작을 감지하는 리스너
-		this.addWindowListener(this);
+		this.addWindowListener(this); // 윈도우 화면에 대한 조작이기 때문에 WindowListener를 사용한다.
 	}
 	
 	@Override

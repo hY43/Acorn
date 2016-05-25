@@ -1,4 +1,4 @@
-package Algorithm;
+package Sort;
 
 // SelectionSort Class Start.
 public class SelectionSort {

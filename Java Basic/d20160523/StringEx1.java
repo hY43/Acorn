@@ -6,7 +6,7 @@ public class StringEx1 {
 		String str1 = new String("java");
 		String str2 = new String("java");
 		// String Class의 toString()
-		// Object 클래스의 toString()를 오버라이드했기 대문에 자기자신의 문다열을 출력할 수 있다.
+		// Object 클래스의 toString()은 참조 값을 출력하지만 이를 오버라이드하여 사용하는 String Class의 toString은 내용, 즉 문자열을 출력한다.
 		System.out.println(str1.getClass().getName() + '@' + Integer.toHexString(str1.hashCode()));
 		System.out.println(str2.toString());
 		

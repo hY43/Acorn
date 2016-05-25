@@ -1,4 +1,4 @@
-package Algorithm;
+package Sort;
 
 // QuickSort Class Start.
 public class QuickSort {

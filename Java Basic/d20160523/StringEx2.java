@@ -53,7 +53,7 @@ public class StringEx2 {
 		System.out.println(str.substring(2,6));
 		
 		System.out.println("-----------------------------------");
-		char[] chArray = str.toCharArray();
+		char[] chArray = str.toCharArray(); // 문자열의 각 문자를 문자 타입의 배열의 요소로 각각 대입한다.
 		// 향상된 for문을 사용해서 위의 배열을 하나씩 출력.
 		for(char chA : chArray)
 			System.out.print(chA);
@@ -77,7 +77,7 @@ public class StringEx2 {
 		// 월요일
 		// 내일은
 		// 화요일
-		String[] d = txt.split(",");
+		String[] d = txt.split(","); // , 문자를 기준으로 문자열을 자른 후 문자열 배열로 전달한다.
 		for(String x : d)
 			System.out.print(x + " ");	
 	}	

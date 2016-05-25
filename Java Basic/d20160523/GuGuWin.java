@@ -40,13 +40,15 @@ public class GuGuWin extends Frame implements ActionListener{
 	
 	public static void main(String[] args)
 	{
+		// 간단한 테스트이므로 클래스에 바로 Main Method 추가하여 테스트.
 		new GuGuWin();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// Text Field에 입력된 Text를 int Type으로 변경하여 int Type 변수 dan에 대입.
-		int dan = Integer.parseInt(tf.getText());
+		int dan = Integer.parseInt(tf.getText()); // getText Method를 이용하여 tf TextField 객체의 내용을 받아온 후,
+												  // Integer.parseInt Method를 이용하여 String Type을 int Type로 변경.
 		
 		for(int i=1;i<10;i++) // 구구단 출력
 			System.out.println(dan + " * " + i + " = " + (dan*i));

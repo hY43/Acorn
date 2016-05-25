@@ -35,7 +35,7 @@ public class MyWin3 extends Frame {
 		add(btn4,"North");
 		add(btn5,"Center");
 		// 컴포넌트를 배치하기 쉽게 하기 위해 배치 관리자를 사용한다.
-		// Frame의 기본 배치 관리자: 보더 레이아웃
+		// Frame의 기본 배치 관리자: border layout
 		
 		// 창이 보이게 설정
 		setVisible(true);
