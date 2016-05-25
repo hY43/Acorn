@@ -11,7 +11,7 @@ public class StarTest4 {
 
 		for (int j = 0; j < (starCnt/2); j++) 
 		{
-			for(int n=starCnt/2;n>j;n--)
+			for(int n=starCnt/2;n>=j;n--)
 				System.out.print("*");
 			System.out.println();
 		}

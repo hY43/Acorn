@@ -1,43 +1,38 @@
 package hw20160519;
 
 public class Bank {
-	/* Member Variable */
-	String account; // ê³„ì¢Œ ë²ˆí˜¸
-	String bankName; // ì€í–‰ ëª… ex)ì‹ í•œ, ìš°ë¦¬,,,
-	String name; // ê³„ì¢Œ ì£¼ëª…
-	int balance; // ì”ì•¡
-	
-	/* Constructor */
-	public Bank(){}
-	public Bank(String account, String bankName, String name, int balance)
+	String account;
+	String bankName;
+	String name;
+	int deposit;
+	Bank(){}
+	Bank(String account, String bankName, String name, int deposit)
 	{
 		this.account = account;
 		this.bankName = bankName;
 		this.name = name;
-		this.balance = balance;
+		this.deposit = deposit;
 	}
-	
-	/* Member Method */
-	public void send(Bank user, int money)
+	void send(Bank user, int money)
 	{
-		if(this.bankName.equals(user.bankName))
+		if(this.bankName != user.bankName)
 		{
-			this.balance -= 500;
-			this.balance -= money;
-			user.balance += money;
-			System.out.println("íƒ€í–‰ ê±°ë˜ì—ëŠ” ìˆ˜ìˆ˜ë£Œ 500ì›ì´ ë¶™ìŠµë‹ˆë‹¤.");
-			System.out.println("[" + name + "] ê³„ì¢Œë²ˆí˜¸(" + account + ") ì”ì•¡: " + this.balance);
+			this.deposit -= 500;
+			this.deposit -= money;
+			user.deposit += money;
+			System.out.println("Å¸Çà °Å·¡¿¡´Â ¼ö¼ö·á 500¿øÀÌ ºÙ½À´Ï´Ù.");
+			System.out.println("[" + name + "] °èÁÂ¹øÈ£(" + account + ") ÀÜ¾×: " + this.deposit);
 		}
 		else
 		{
-			this.balance -= money;
-			user.balance += money;
-			System.out.println("[" + name + "] ê³„ì¢Œë²ˆí˜¸(" + account + ") ì”ì•¡: " + this.balance);
+			this.deposit -= money;
+			user.deposit += money;
+			System.out.println("[" + name + "] °èÁÂ¹øÈ£(" + account + ") ÀÜ¾×: " + this.deposit);
 		}
 	}
-	public void print()
+	void print()
 	{
-		System.out.println("[" + this.name + "] ê³„ì¢Œë²ˆí˜¸(" + this.account + ") ì”ì•¡: " + this.balance);
+		System.out.println("[" + this.name + "] °èÁÂ¹øÈ£(" + this.account + ") ÀÜ¾×: " + this.deposit);
 	}
 }
 

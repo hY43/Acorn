@@ -16,6 +16,7 @@ public class Gun implements Weapon{
 	/* Member Method */
 	@Override
 	public void use() {
+		// Weapon Interface의 추상 메서드인 use를 구현.
 		if(CUR_BULLET > 0)
 		{
 			System.out.println("탕탕");
