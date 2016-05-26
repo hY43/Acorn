@@ -8,7 +8,7 @@ public class UtilEx1 {
 		System.out.println(rnd.nextInt()); // int 범위 내의 정수 반환.
 		for(int i = 0;i<100;i++)
 		{
-			int k = rnd.nextInt(45);
+			int k = rnd.nextInt(45); // 0~45까지의 값 반환
 			System.out.println("K: " + k + " ");
 		}
 	}

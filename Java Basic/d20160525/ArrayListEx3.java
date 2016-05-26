@@ -17,7 +17,7 @@ public class ArrayListEx3 {
 		// ArrayList 안에 있는 값 꺼내서 출력하기
 		for(int i=0;i<list.size();i++)
 		{
-			String str = (String)list.get(i);
+			String str = list.get(i);
 			System.out.println(str.substring(0, 1));
 		}
 		
