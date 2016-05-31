@@ -8,49 +8,49 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GuGuWin extends Frame implements ActionListener{
-	Button btn = new Button("Ãâ·Â");
-	TextField tf = new TextField("",10);
-	Label lb = new Label("´Ü", Label.CENTER);
+	Button btn = new Button("ì¶œë ¥"); // Button ê°ì²´ë¥¼ ìƒì„±í•˜ê³  ê·¸ Textì— "ì¶œë ¥" ë¬¸ìì—´ì„ ë„£ëŠ”ë‹¤.
+	TextField tf = new TextField("",10); // TextField ê°ì²´ë¥¼ ìƒì„±.
+	Label lb = new Label("ë‹¨", Label.CENTER); // Label ê°ì²´ë¥¼ ìƒì„±í•˜ë˜, ê¸€ìê°€ Labelì˜ ê°€ìš´ë°(Center)ì— ì˜¤ë„ë¡ ì„¤ì •.
 	
 	public GuGuWin()
 	{
-		/* Component ÃÊ±âÈ­ */
-		// Window Component ÃÊ±âÈ­.
-		this.setTitle("±¸±¸´Ü");
-		this.setBounds(150,150,500,400);
-		this.setLayout(null);
-		//TableField Component ÃÊ±âÈ­.
-		tf.setBounds(100,150,200,50);
-		// Label Component ÃÊ±âÈ­.
-		lb.setBounds(310,150,100,50);
-		// Button Component ÃÊ±âÈ­.
-		btn.setBounds(100,300,300,50);
+		/* Component ì´ˆê¸°í™” */
+		// Window Component ì´ˆê¸°í™”.
+		this.setTitle("êµ¬êµ¬ë‹¨"); // Window Component Title ì„¤ì •
+		this.setBounds(150,150,500,400); // Window Component ìœ„ì¹˜ ë° í¬ê¸° ì„¤ì •
+		this.setLayout(null); // Window Component Layoutì„ nullë¡œ í•˜ì—¬ ì‚¬ìš©ìê°€ ì •ì˜í•  ìˆ˜ ìˆê²Œ ì„¤ì •.
+		//TableField Component ì´ˆê¸°í™”.
+		tf.setBounds(100,150,200,50); // TextField Component ìœ„ì¹˜ ë° í¬ê¸° ì„¤ì •.
+		// Label Component ì´ˆê¸°í™”.
+		lb.setBounds(310,150,100,50); // Label Component ìœ„ì¹˜ ë° í¬ê¸° ì„¤ì •.
+		// Button Component ì´ˆê¸°í™”.
+		btn.setBounds(100,300,300,50); // Button Component ìœ„ì¹˜ ë° í¬ê¸° ì„¤ì •.
 
-		/* Listener Ãß°¡ */
-		btn.addActionListener(this);
+		/* Listener ì¶”ê°€ */
+		btn.addActionListener(this); // Button Componentì— ëŒ€í•œ Event Listener ì¶”ê°€.
 		
-		/* Component °áÇÕ */
+		/* Component ê²°í•© */
 		add(btn);
 		add(lb);
 		add(tf);
 
-		/* ¿Ï¼ºµÈ Component º¸ÀÌµµ·Ï ¼³Á¤ º¯°æ */
+		/* ì™„ì„±ëœ Component ë³´ì´ë„ë¡ ì„¤ì • ë³€ê²½ */
 		this.setVisible(true);
 	}
 	
 	public static void main(String[] args)
 	{
-		// °£´ÜÇÑ Å×½ºÆ®ÀÌ¹Ç·Î Å¬·¡½º¿¡ ¹Ù·Î Main Method Ãß°¡ÇÏ¿© Å×½ºÆ®.
+		// ê°„ë‹¨í•œ í…ŒìŠ¤íŠ¸ì´ë¯€ë¡œ í´ë˜ìŠ¤ì— ë°”ë¡œ Main Method ì¶”ê°€í•˜ì—¬ í…ŒìŠ¤íŠ¸.
 		new GuGuWin();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// Text Field¿¡ ÀÔ·ÂµÈ Text¸¦ int TypeÀ¸·Î º¯°æÇÏ¿© int Type º¯¼ö dan¿¡ ´ëÀÔ.
-		int dan = Integer.parseInt(tf.getText()); // getText Method¸¦ ÀÌ¿ëÇÏ¿© tf TextField °´Ã¼ÀÇ ³»¿ëÀ» ¹Ş¾Æ¿Â ÈÄ,
-												  // Integer.parseInt Method¸¦ ÀÌ¿ëÇÏ¿© String TypeÀ» int Type·Î º¯°æ.
+		// Text Fieldì— ì…ë ¥ëœ Textë¥¼ int Typeìœ¼ë¡œ ë³€ê²½í•˜ì—¬ int Type ë³€ìˆ˜ danì— ëŒ€ì….
+		int dan = Integer.parseInt(tf.getText()); // getText Methodë¥¼ ì´ìš©í•˜ì—¬ tf TextField ê°ì²´ì˜ ë‚´ìš©ì„ ë°›ì•„ì˜¨ í›„,
+												  // Integer.parseInt Methodë¥¼ ì´ìš©í•˜ì—¬ String Typeì„ int Typeë¡œ ë³€ê²½.
 		
-		for(int i=1;i<10;i++) // ±¸±¸´Ü Ãâ·Â
+		for(int i=1;i<10;i++) // êµ¬êµ¬ë‹¨ ì¶œë ¥
 			System.out.println(dan + " * " + i + " = " + (dan*i));
 		
 		tf.setText(""); // TextField Clear
