@@ -10,19 +10,19 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 public class MTServer extends Thread {
-	Socket client;
-	MTServer(Socket client) // Á¢¼ÓÇÏ´Â Å¬¶óÀÌ¾ğÆ®ÀÇ ¼ÒÄÏ °´Ã¼.......
+	Socket client; // í´ë¼ì´ì–¸íŠ¸ ì†Œì¼“ ì •ë³´ë¥¼ ë°›ê¸° ìœ„í•œ Socket ê°ì²´
+	MTServer(Socket client) // ì ‘ì†í•˜ê³ ì í•˜ëŠ” í´ë¼ì´ì–¸íŠ¸ì˜ ì†Œì¼“ ì •ë³´ë¥¼ Listener Socketìœ¼ë¡œ ë¶€í„° ì „ë‹¬ ë°›ëŠ”ë‹¤.
 	{
 		this.client = client;
 	}
 	@Override
 	public void run() {
-		// ¸ğµç Å¬¶óÀÌ¾ğÆ®¿Í Åë½ÅÀ» ´ã´çÇÏ´Â ÄÚµå.
-		InetAddress inet = client.getInetAddress();
+		// ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ì™€ í†µì‹ ì„ ë‹´ë‹¹í•˜ëŠ” ì½”ë“œ.
+		InetAddress inet = client.getInetAddress(); // í´ë¼ì´ì–¸íŠ¸ì˜ Local IP ì •ë³´ë¥¼ ì–»ì–´ì˜¨ë‹¤.
 		String ip = inet.getHostAddress();
-		System.out.println("Á¢¼ÓÀÚ IP: " + inet.getHostAddress());
+		System.out.println("ì ‘ì†ì IP: " + inet.getHostAddress());
 		
-		// ¼­¹öÀÇ ¼ö½Å °´Ã¼
+		// ì„œë²„ì˜ ìˆ˜ì‹  ê°ì²´
 		try {
 			BufferedReader br = new BufferedReader(
 									new InputStreamReader(
@@ -40,6 +40,6 @@ public class MTServer extends Thread {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// ¼­¹öÀÇ ¹ß½Å °´Ã¼
+		// ì„œë²„ì˜ ë°œì‹  ê°ì²´
 	}
 }
