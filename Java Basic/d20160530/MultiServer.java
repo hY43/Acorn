@@ -7,12 +7,11 @@ import java.net.Socket;
 public class MultiServer {
 	public static void main(String[] args) {
 		try {
-			ServerSocket ss = new ServerSocket(5000); // 5000ë²ˆ portë¥¼ opení•˜ëŠ”  Socket ê°ì²´ ìƒì„±.
+			ServerSocket ss = new ServerSocket(5000); // 5000¹ø port¸¦ openÇÏ´Â  Socket °´Ã¼ »ı¼º.
 			while(true){
-				System.out.println("í´ë¼ì´ì–¸íŠ¸ ì ‘ì† ëŒ€ê¸°ì¤‘");
-				Socket client = ss.accept(); // í´ë¼ì´ì–¸íŠ¸ê°€ ë“¤ì–´ì˜¤ê¸¸ ëŒ€ê¸°. ë‹¨ ì´ì „ê³¼ëŠ” ë‹¬ë¦¬ ë¬´í•œ ë°˜ë³µ ì‹œì¼œì„œ Client SocketëŠ” í´ë¼ì´ì–¸íŠ¸ ì¸¡ì—ì„œ ì ‘ì†í•´ì˜¬ë•Œë§ˆë‹¤ ë°›ì•„ì£¼ëŠ” ì•ˆë‚´ ë°ìŠ¤í¬ ì—­í• ë§Œ í•´ì¤Œ.
-							     // ì‹¤ì œë¡œ í´ë¼ì´ì–¸íŠ¸ê°€ ì ‘ì†í•˜ë©´ ë‹¤ë¥¸ ì†Œì¼“ì„ ìƒì„±í•˜ì—¬ í´ë¼ì´ì–¸íŠ¸ ì •ë³´ë¥¼ ë„˜ê²¨ì£¼ê³ , ë‹¤ìŒ í´ë¼ì´ì–¸íŠ¸ê°€ ì ‘ì†í• ë•Œê¹Œì§€ ëŒ€ê¸°í•œë‹¤.ã„´
-				MTServer ms = new MTServer(client); // ì‹¤ì œ ë°ì´í„°ë¥¼ ì£¼ê³  ë°›ì„ ì†Œì¼“ í´ë˜ìŠ¤ì¸ë° ì—¬ëŸ¬ ëª…ì˜ ì‚¬ìš©ìì™€ ë™ì‹œì— í†µì‹ í•˜ê¸° ìœ„í•´ Threadë¡œ êµ¬í˜„.
+				System.out.println("Å¬¶óÀÌ¾ğÆ® Á¢¼Ó ´ë±âÁß");
+				Socket client = ss.accept(); // Å¬¶óÀÌ¾ğÆ®°¡ µé¾î¿À±æ ´ë±â. ´Ü ÀÌÀü°ú´Â ´Ş¸® ¹«ÇÑ ¹İº¹ ½ÃÄÑ¼­ Client Socket´Â Å¬¶óÀÌ¾ğÆ® Ãø¿¡¼­ Á¢¼ÓÇØ¿Ã¶§¸¶´Ù ¹Ş¾ÆÁÖ´Â ¾È³» µ¥½ºÅ© ¿ªÇÒ¸¸ ÇØÁÜ.
+				MTServer ms = new MTServer(client); // ½ÇÁ¦ µ¥ÀÌÅÍ¸¦ ÁÖ°í ¹ŞÀ» ¼ÒÄÏ Å¬·¡½ºÀÎµ¥ ¿©·¯ ¸íÀÇ »ç¿ëÀÚ¿Í µ¿½Ã¿¡ Åë½ÅÇÏ±â À§ÇØ Thread·Î ±¸Çö.
 				ms.start();
 			}
 		} catch (IOException e) {
