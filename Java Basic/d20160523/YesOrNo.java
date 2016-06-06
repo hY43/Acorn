@@ -19,11 +19,11 @@ public class YesOrNo extends Frame implements WindowListener, MouseMotionListene
 		setBounds(50,50,800,600);
 		setTitle("Yes Or No");
 		
-		lb = new Label("Hello", Label.CENTER);
+		lb = new Label("Hello", Label.CENTER); // Hello 문자열이 적힌 Label을 생성하되, 문자열을 가운데 정렬한다.
 		Color c = new Color(231,54,65);
 		lb.setBackground(c);
-		btnY = new Button("Yes");
-		btnN = new Button("No");
+		btnY = new Button("Yes"); // Yes 문자열이 든 버튼을 생성.
+		btnN = new Button("No"); // No 문자열이 든 버튼을 생성.
 		
 		lb.setBounds(180, 180, 400, 100);
 		btnY.setBounds(180, 440, 200, 100);
@@ -33,8 +33,8 @@ public class YesOrNo extends Frame implements WindowListener, MouseMotionListene
 		add(lb);
 		setVisible(true);
 		
-		this.addWindowListener(this);
-		this.addMouseMotionListener(this);
+		this.addWindowListener(this); // Window Component 내에 움직임을 확인하는 리스너를 추가.
+		this.addMouseMotionListener(this); // 마우스의 움직임을 확인하는 리스너 추가.
 		
 	}
 	public static void main(String[] args){

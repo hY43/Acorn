@@ -10,13 +10,13 @@ import java.awt.event.ActionListener;
 public class GuGuWin extends Frame implements ActionListener{
 	Button btn = new Button("출력");
 	TextField tf = new TextField("",10);
-	Label lb = new Label("단", Label.CENTER);
+	Label lb = new Label("단", Label.CENTER); // 문자열을 Label의 중앙에 오도록 하게 하는 Label을 생성.
 	
 	public GuGuWin()
 	{
 		/* Component 초기화 */
 		// Window Component 초기화.
-		this.setTitle("구구단");
+		this.setTitle("구구단"); // Window Component의 Title을 구구단으로 설정.
 		this.setBounds(150,150,500,400);
 		this.setLayout(null);
 		//TableField Component 초기화.
@@ -27,7 +27,7 @@ public class GuGuWin extends Frame implements ActionListener{
 		btn.setBounds(100,300,300,50);
 
 		/* Listener 추가 */
-		btn.addActionListener(this);
+		btn.addActionListener(this); // 버튼에 대한 리스너 설치.
 		
 		/* Component 결합 */
 		add(btn);

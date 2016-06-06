@@ -25,25 +25,25 @@ public class LogIn extends Frame implements ActionListener{
 		setBounds(500,300,500,300); // Window Component 위치 및 크기 지정
 		
 		// Button Component
-		btnLogin = new Button("로그인");
-		btnLogin.setBounds(150,200,80,50);
-		Color c = new Color(180,205,230);
-		btnLogin.setBackground(c);
-		btnReset = new Button("Reset");
-		btnReset.setBounds(250,200,80,50);
+		btnLogin = new Button("로그인"); // "로그인" 버튼 생성
+		btnLogin.setBounds(150,200,80,50); // "로그인" 버튼의 사이즈 및 위치 설정.
+		Color c = new Color(180,205,230); // RGB 값을 이용한 color 생성
+		btnLogin.setBackground(c); // 생성한 color로 "로그인" 버튼 색 설정.
+		btnReset = new Button("Reset"); // "Reset" 버튼 생성
+		btnReset.setBounds(250,200,80,50); // "Reset" 버튼의 위치 및 크기 지정.
 		c = new Color(224,229,245);
 		btnLogin.setBackground(c);
 		
 		// Label Component
-		lbId = new Label("ID", Label.CENTER);
-		lbId.setBounds(150,80, 20,20);
-		lbPw = new Label("PW", Label.CENTER);
-		lbPw.setBounds(150,120, 20,20);
+		lbId = new Label("ID", Label.CENTER); // ID 문자열 라벨을 생성하되 문자열을 라벨의 중앙에 위치한다.
+		lbId.setBounds(150,80, 20,20); // 라벨의 위치 및 크기 설정.
+		lbPw = new Label("PW", Label.CENTER); // PW 문자열 라벨을 생성하되 문자열을 라벨의 중앙에 위치한다.
+		lbPw.setBounds(150,120, 20,20); // 라벨의 위치 및 크기 설정.
 		
 		// TextField Component
-		tfId = new TextField();
+		tfId = new TextField(); // id를 입력할 TextField 생성
 		tfId.setBounds(180, 75, 150, 30);
-		tfPw = new TextField();
+		tfPw = new TextField(); // 비밀번호를 입력할 TextField 생성.
 		tfPw.setBounds(180, 115, 150, 30);
 		
 		/* Component 추가 */
@@ -56,8 +56,8 @@ public class LogIn extends Frame implements ActionListener{
 		setVisible(true);
 		
 		/* Listener 추가 및 수행 */
-		btnLogin.addActionListener(this);
-		btnReset.addActionListener(this);
+		btnLogin.addActionListener(this); // login 버튼에 대한 리스너 추가.
+		btnReset.addActionListener(this); // Reset 버튼에 대한 리스너 추가.
 	}
 
 	@Override

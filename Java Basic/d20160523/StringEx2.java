@@ -8,7 +8,7 @@ public class StringEx2 {
 		System.out.println(ch); // 배열은 index가 0번 부터 있으므로 a가 출력된다.
 		
 		String str2 = "월요일";
-		System.out.println(str.concat(str2));
+		System.out.println(str.concat(str2)); // str의 문자열과 str2의 문자열을 이어 붙인 후, 출력한다.
 		
 		String s1 = "월 ";
 		String s2 = "화 ";

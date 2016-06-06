@@ -14,6 +14,7 @@ public class StringEx1 {
 			System.out.println("같은 객체");
 		else
 			System.out.println("다른 객체");
+		// "java"라는 같은 문자열이지만 새로운 객체로 생성하기 때문에 다른 객체가 출력된다.
 		
 		// Object Class의 equals Method: 참조 값 비교 Method
 		// String Class의 equals Method: Object Class의 equals Method를 override하여 내용 비교로 사용된다.

@@ -7,9 +7,9 @@ public class StringBufferEx {
 		// 거꾸로 출력할 것
 		// dlroW avaj olleH
 		
-		char[] ch = str.toCharArray();
+		char[] ch = str.toCharArray(); // String 값을 문자 배열로 변환하여 넘겨준다.
 		for(int i = ch.length-1;i>=0;i--)
-			System.out.print(ch[i]);
+			System.out.print(ch[i]); // 입력된 문자열을 역순으로 출력.
 		
 		System.out.println();
 		// StringBuffer Class를 이용한 역순 출력.

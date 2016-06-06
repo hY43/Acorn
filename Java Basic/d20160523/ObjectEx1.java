@@ -13,14 +13,16 @@ import d20160519.마린;
 
 public class ObjectEx1 {
 	public static void main(String[] args) {
+		// Object Type의 변수 선언
 		Object obj1 = new Object();
 		Object obj2 = new Object();
 		
-		obj1 = obj2;
+		obj1 = obj2; // 참조 변수 obj2에 들은 참조 값을 참조 변수 obj1에 넣는다.
 		System.out.println("obj1: " + obj1);
 		System.out.println("obj2: " + obj2);
+		// 참조 변수 obj1과 obj2의 참조 값이 같으므로 동일한 참조 값을 출력한다.
 		
-		if(obj1 == obj2)
+		if(obj1 == obj2) // 참조 값이 같으므로 동일 객체가 출력된다.
 			System.out.println("동일 객체");
 		else
 			System.out.println("다른 객체");
@@ -31,6 +33,7 @@ public class ObjectEx1 {
 			System.out.println("동일 객체");
 		else
 			System.out.println("다른 객체");
+		// Object Class의 equals는 참조 값에 대한 비교를 진행한다.
 
 		System.out.println("------------------------------------");
 		Class cls = obj1.getClass();
@@ -42,10 +45,10 @@ public class ObjectEx1 {
 		System.out.println(obj1 instanceof 마린);
 		
 		System.out.println("------------------------------------");
-		System.out.println("obj2 참조값: " + obj2);
-		System.out.println("obj2.toString(): " + obj2.toString());
+		System.out.println("obj2 참조값: " + obj2); // 참조 변수 obj2에 들은 참조 값 출력.
+		System.out.println("obj2.toString(): " + obj2.toString()); // Object Class의 toString은 참조 값을 출력한다.
 		System.out.println("obj2 참조값 만들기 " + (
-		obj2.getClass().getName() + '@' + Integer.toHexString(obj2.hashCode()))
+		obj2.getClass().getName() + '@' + Integer.toHexString(obj2.hashCode())) // Object Class의 toString은 이와 같은 형식을 출력하는 것이다.
 				);
 		System.out.println("------------------------------------");
 
