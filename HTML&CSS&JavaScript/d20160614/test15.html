@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>박스모델</title>
+	<style type="text/css">
+		/*Box1: id가 div1인 div 너비 200px 높이 200px
+		색상은 회색 테두리는 파란색 점선*/
+		#div1{
+			width:200px;
+			height:200px;
+			border:1px dotted blue;
+			background-color:gray;
+			margin:200px;
+			padding:20px;
+		}
+
+		/*Box2: id가 div2인 div 영역 너비 50 높이 50
+		2px 점선 파란색 배경은 핫핑크*/
+		#div2{
+			width:50px;
+			height:50px;
+			border:2px dotted blue;
+			background-color:hotpink;
+		}
+	</style>
+</head>
+<body>
+	<h1>Box Model</h1>
+	<div id="div1">
+		<form action="">
+		ID:<br><input type="text" name="id" id="">
+		PW:<input type="password" name="pw" id="">
+		<input id="submit1" type="submit" value="로그인">
+		</form>
+	</div>
+	<div id="div2">Box2</div>
+</body>
+</html>

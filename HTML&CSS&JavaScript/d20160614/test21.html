@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type=text/css>
+		#containter{
+			margin:auto;
+			width:900px;
+			/* 900 ~ 1200px */
+		}
+		#header{
+			background-color: silver;
+			color:white;
+			height:200;
+		}
+		img{
+			width:900px;
+		}
+		#sidebar1{
+			background-color: brown;
+			width:200px;
+			float:left;
+		}
+		#sidebar2{
+			background-color: yellow;
+			width:200px;
+			float:right;
+		}
+		#contents{
+			margin:0px 10px;
+			background-color: blue;
+			width:480px;
+			float:left;
+		}
+		#footer{
+			background-color: green;
+			height:200px;
+			/*float 기능해제*/
+			clear:both;
+		}
+		#nav{
+			background-color: #f47c20;
+		}
+		.button{
+			/*텍스트 장식 없음*/
+			text-decoration: none;
+			/*글자는 중앙*/
+			text-align: center;
+			/*글자 폰트 나눔 고딕 14px*/
+			font:14px 나눔고딕;
+			padding:10px 20px 10px;
+			/*테두리 1px 실선, #f8e098*/
+			border: 1px solid #f8e098;
+			/*배경색 #f0e2c0*/
+			background-color: #f0e2c0;
+		}
+		/*마우스가 올라왔을때(hover)*/
+		.button:hover{
+			background-color:yellow;
+		}
+		/*마우스로 클릭했을때(active)*/
+		.button:active{
+			background-color: red;
+			color:blue;
+			position:relative;
+			top:2px;
+		}
+	</style>
+</head>
+<body>
+	<div id="containter">
+		<div id="header">
+			<div id="logo">
+				<img src="../image/logo.gif" alt="네이버로고">
+			</div>
+			<div id="nav">
+				<a href="#" class="button">HOME</a>
+				<a href="#" class="button">JAVA</a>
+				<a href="#" class="button">ORACLE</a>
+				<a href="#" class="button">JSP</a>
+			</div>
+		</div>
+		<div id="sidebar1">
+			<h1>왼쪽 제목</h1>
+			<ul>
+				<li>신문사1</li>
+				<li>신문사2</li>
+				<li>신문사3</li>
+				<li>신문사4</li>
+			</ul>
+		</div>
+		<div id="contents">
+			<h1>메인 컨텐츠</h1>
+					<ul>
+			<li>메인 기사1</li>
+			<li>메인 기사2</li>
+			<li>메인기사3</li>
+			<li>메인기사4</li>
+		</ul>
+		</div>
+
+		<div id="sidebar2">
+		<h1>오른쪽 제목</h1>
+		<ul>
+			<li>오른쪽 기사1</li>
+			<li>오른쪽 기사2</li>
+			<li>오른쪽 기사3</li>
+			<li>오른쪽 기사4</li>
+		</ul>
+		</div>
+		
+		<div id="footer">
+				<h1>네이벙</h1>
+				<p>이 사이트는 오늘 만들어진 불완전한 사이트 입니다.</p>
+				<p>가입하시면  소중한 개인정보는 제 마음대로 사용하도록 하겠습니다.</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body{
+			/*body 태그에 설정을 변경하면 그 자식 요소인 h1, div 그리고 div의 자식 요소인 p 태그 등에 모두 적용된다.*/
+			font-size:70%;
+		}
+		div{
+			font-size:2em; /*em 부모보다 X배 크도록 설정*/
+			/*em 단위는 부모 크기를 기준으로 상대적으로 변화는 단위를 말한다.*/
+			border:1px dotted red; /*div 태그에는 적용되지만 그 자식 요소인 p 태그에는 적용되지 않는다.*/
+		}
+		p{
+			border:1px solid blue;
+			font-size:1.5em;
+		}
+	</style>
+</head>
+<body>
+	<h1>상속</h1>
+	<div>
+		<p>부모요소에 적용한 스타일이 자식 요소에 연결되어 적용되는 것을 CSS에서의 상속이라 한다. </p>
+		<p>CSS에서 속성은 기본적으로 하위 요소로 상속되는 속성과 상속되지 않는 속성이 있다.</p>
+		<p>border, margin, padding, float, position과 같은 속성들은 상속되지 않는다.</p>
+	</div>
+</body>
+</html>
