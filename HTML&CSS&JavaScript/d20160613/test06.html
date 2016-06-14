@@ -1,0 +1,40 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>표 만들기</title>
+</head>
+<body>
+	<h3>표만들기</h3>
+	<table border="1" width="200px" cellspacing="20" cellpadding="20"> 
+		<tr>
+			<td>1</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>4</td>
+		</tr>
+	</table>
+	
+	<br>
+
+	<!-- emmet -->
+	<!-- table>(tr>td*3)*3 + 탭 -->
+	<table border="1" width="200px" cellspacing="10" cellpadding="10">
+		<tr bgcolor="blue">
+			<td colspan="3"></td>
+			<td rowspan="3" bgcolor="gray"></td>
+		</tr>
+		<tr bgcolor="yellow">
+			<td></td>
+			<td colspan="2"></td>
+		</tr>
+		<tr bgcolor="red">
+			<td colspan="2"></td>
+			<td></td>
+		</tr>
+	</table>
+
+
+</body>
+</html>

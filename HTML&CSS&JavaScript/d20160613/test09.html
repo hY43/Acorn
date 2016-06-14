@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>다양한 입력표현</title>
+</head>
+<body>
+	<h2>다양한 입력표현</h2>
+	<!-- 제출을 위해 전체를 하나의 양식으로 만드는 form 태그 -->
+	<form action="test09_next.html" method="">
+	<input type="text" name="id"><br />
+	<input type="password" name="pw" id=""><br />
+	<input type="checkbox" name="quest1" id="">1번
+	<input type="checkbox" name="quest2" id="">2번
+	<br />
+	<!-- radio button에서 둘중 하나만 체크되도록하려면 name이 일치해야한다. -->
+	<input type="radio" name="gender" id="">남
+	<input type="radio" name="gender" id="">여
+	<!-- date type input하면 달력을 만들 수 있다. -->
+	<input type="date" name="day" id="">
+	<br />
+	<!-- submit은 위에 action에 아무것도 적어주지 않으면 나 자신에게 돌려주게 된다. -->
+	<input type="submit" value="로그인">
+	<input type="reset" value="reset">
+	</form>
+</body>
+</html>
