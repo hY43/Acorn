@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function prt(){
+			// console.log("txt1: " + document.getElementById("txt1").value + ", txt2: " + document.getElementById("txt2").value);
+			var txt1 = document.getElementById("txt1");
+			var txt2 = document.getElementById("txt2");
+			console.log(txt1.value);
+			console.log(txt2.value);
+			var txt3 = document.getElementById("txt3");
+			// txt3.value = eval(txt1.value)+eval(txt2.value);
+			txt3.value = parseInt(txt1.value) + parseInt(txt2.value);
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt1">
+	+
+	<input type="text" name="" id="txt2">
+	<input type="button" value="btn" onclick="prt();">
+	<input type="text" name="" id="txt3">
+	<!-- 버튼을 클릭하면 txt1의 값과 txt2의 값을 콘솔에 출력하시오 -->
+</body>
+</html>

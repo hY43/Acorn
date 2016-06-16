@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var now = new Date(); // 날짜에 대한 객체 생성.
+		console.log(now);
+		var year = now.getYear()+1900; // 1900년을 기준으로 +되는 년수를 반환해준다.
+		console.log(year);
+		var month = now.getMonth()+1;
+		console.log(month);
+		var day = now.getDate();
+		console.log(day);
+		console.log("오늘은 " + year + "년 " + month + "월 " + day + "일");
+		// 문자열 객체
+		var str = "ABCDDBCA";
+		// 2번째 글자부터 3글자
+		console.log(str.substr(2,3));
+		console.log(str.indexOf('A'));
+		console.log(str.lastIndexOf('A'));
+
+		var email = "dagda@hanafos.com";
+		console.log(email.substr(0,email.indexOf('@'))); // email에서 id만 추출
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function overImg(){
+			// console.log("hello");
+			document.getElementById("photo").src = "../image/daebak2.jpg";
+		}
+		function outImg(){
+			// console.log("hello");
+			document.getElementById("photo").src = "../image/daebak.jpg";
+		}
+	</script>
+	<style type="text/css">	
+		img{
+			width:300px; height:300px;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<img src="../image/daebak.jpg" alt="대박" onmouseover="overImg();" onmouseout="outImg();" id="photo">
+	</div>
+</body>
+</html>

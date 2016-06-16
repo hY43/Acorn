@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">	
+		table, th, td, #sub {
+			border:1px solid;
+			width:400px;
+			margin:auto;
+			text-align: center;
+		}
+		th{
+			background-color: gray;
+			width:100%;
+		}
+		td{
+			width:100%;
+		}
+		#btn{
+			/*margin:30px auto;
+			width:180px;
+			height:80px;
+			border-radius: 20px;*/
+		}
+		/*input[type='text']{
+			input Tag중에 type이 text 인것.
+		}*/
+		/*input[type!='text']{
+			input Tag중에 type이 text가 아닌 것.
+		}*/
+
+	</style>
+	<script type="text/javascript">
+		function checkValue(obj){
+			//console.dir(obj);
+			var name = obj.id.value;
+			var passwd = obj.pw.value;
+			var passwd2 = obj.repw.value;
+			var email = obj.email.value;
+
+			console.log(name + " " + passwd + " " + passwd2 + " " + email);
+			if(name==''){
+				alert("아이디를 입력하세요");
+				obj.id.focus();
+				return;
+			}
+			if(passwd == ''){
+				alert("비밀번호를 입력하세요");
+				obj.pw.focus();
+				return;
+			}
+			if(passwd2 == ''){
+				alert("비밀번호를 한번더 입력하세요");
+				obj.repw.focus();
+				return;
+			}
+			if(email == ''){
+				alert("이메일을 입력하세요");
+				obj.email.focus();
+				return;
+			}
+			if(passwd != passwd2){
+				alert("두 개의 패스워드가 동일해야 합니다.");
+				obj.pw.value="";
+				obj.repw.value="";
+				obj.pw.focus();
+				return;
+			}
+			if(email.indexOf('@') == -1){
+				alert("올바른 형식의 이메일을 입력하세요");
+				obj.email.value ="";
+				obj.email.focus();
+				return;
+			}
+			// 페이지 이동
+			obj.action = "javascript18_next.html";
+			obj.method="get"
+			obj.submit();
+			 // 모든 조건을 만족했을 때만 페이지를 이동 시키기 위해 input(submit) 을 사용하지 않고, submit Method를 사용한다. 
+		}
+	</script>
+</head>
+<body>
+	<form>
+	<table>
+		<tr>
+			<th>아이디</th>
+			<td><input type="text" name="id" id=""></td>
+		</tr>
+		<tr>
+			<th>패스워드</th>
+			<td><input type="text" name="pw" id=""></td>
+		</tr>
+		<tr>
+			<th>패스워드 확인</th>
+			<td><input type="text" name="repw" id=""></td>
+		</tr>
+		<tr>
+			<th>이메일</th>
+			<td><input type="text" name="email" id=""></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<input type="button" id="btn" value="회원가입" onclick="checkValue(this.form)">
+			</td>
+		</tr>
+	</table>
+	</form>
+</body>
+</html>

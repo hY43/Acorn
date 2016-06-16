@@ -10,9 +10,11 @@
 			padding:20px;
 			/*text-align: center;*/
 			margin:auto;
-			font-size:15px;
+			font-size:20px;
 		}
-
+		h3{
+			text-align: center;
+		}
 		#header{
 			margin:auto;
 			width:350px;
@@ -29,23 +31,22 @@
 		#pwdagain{
 			padding-top:10px;
 		}
-		#submit{
+		#button1{
 			padding-top:10px;
-			background-color:orange;
+
 		}
 		#footer1{
 			font-size:14px;
 			padding-top:10px;
+			text-decoration:none;
 		}
 		#footer2{
 			font-size:14px;
 			padding-top:10px;
+			text-decoration:none;
 		}
 		input{
 			width:340px;
-		}
-		a{
-			text-decoration:none;
 		}
 	</style>
 </head>
@@ -56,28 +57,27 @@
 		</div>
 		
 		<div id="contents">
-			<h2>Create account</h2>
-	
-			<div>
+			<h3>Create account</h3>
+			
+			<div id="name">
 				Your name<br/>
-				<input type="text" id="name" name="your name" id="">
-			</div><br>
-			<div>
+				<input type="text" name="your name" id="">
+			</div>
+			<div id="email">
 				Email<br/>
-				<input type="text" id="email" name="email" id="">	
-			</div><br>
-			<div>
+				<input type="text" name="email" id="">	
+			</div>
+			<div id="pwd">
 				Password<br/>
-				<input type="password" id="pwd" name="password" id="">	
-			</div><br>
-			<div>
+				<input type="password" name="password" id="">	
+			</div>
+			<div id="pwdagain">
 				Password again<br/>
-				<input type="password" id="pwdagain" name="password again" id="">	
-			</div><br>
-			<br>
-			<div>
-				<input type="submit"  id="submit" value="Create your Amazon account">
-			</div><br>
+				<input type="password" name="password again" id="">	
+			</div>
+			<div id="button1">
+				<input type="button" value="Create your Amazon account">
+			</div>
 
 			<div id="footer1">
 				By creating an account, you agree to Amazon's <br>

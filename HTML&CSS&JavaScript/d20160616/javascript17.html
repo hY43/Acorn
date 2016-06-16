@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function goSite(){
+			//console.dir(document.frm.menu.option[1].selected);
+			//console.dir(document.frm.menu[1].selected);
+			console.dir(document);
+			// if(document.frm.menu[1].selected)
+			// 	location.href = document.frm.menu[1].value;
+			// else if(document.frm.menu[2].selected)
+			// 	location.href = document.frm.menu[2].value;
+			// else if(document.frm.menu[3].selected)
+			// 	location.href = document.frm.menu[3].value;
+		}
+	</script>
+
+</head>
+<body>
+	<h1>점심은 뭐먹지?</h1>
+	<form name="frm" id="">
+		<select name="menu" onchange="goSite()">
+			<option value="">--------------------------------------------------------</option>
+			<option value="http://www.mcdonalds.co.kr/www/kor/main/main.do">맥도날드</option>
+			<option value="http://www.burgerking.co.kr/">버거킹</option>
+			<option value="http://www.bonjuk.co.kr/main/juk_main2.asp">본죽</option>
+		</select>
+	</form>
+</body>
+</html>

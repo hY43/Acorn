@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function checkMenu(){
+			console.dir(document);
+			//console.log(document.frm[0].checked);
+			if(document.frm[0].checked) 
+				console.log("지하");
+			else if(document.frm[1].checked) 
+				console.log("짬뽕");
+			else if(document.frm[1].checked) 
+				console.log("김밥");
+			else if(document.frm[1].checked) 
+				console.log("냉면");
+			else if(document.frm[1].checked) 
+				console.log("김밥");
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<h1>점심 메뉴 고르기</h1>
+	<form name="frm">
+		<input type="radio" name="Menu" id="">지하
+		<input type="radio" name="Menu" id="">짬뽕
+		<input type="radio" name="Menu" id="">김밥
+		<input type="radio" name="Menu" id="">냉면
+		<input type="radio" name="Menu" id="">햄버거
+		<input type="button" value="메뉴 결정" onclick = "checkMenu();">
+	</form>
+</body>
+</html>

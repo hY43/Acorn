@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 버튼을 누르면 10 사이트 중 랜덤하게 1곳으로 이동.
+		function goSite(){
+			var site = new Array(10);
+			site[0] = "http://www.naver.com";
+			site[1] = "http://www.daum.net";
+			site[2] = "http://www.yahoo.com";
+			site[3] = "http://www.oracle.com";
+			site[4] = "http://www.google.com";
+			site[5] = "http://www.okky.kr";
+			site[6] = "http://www.iamroot.org";
+			site[7] = "http://www.mcdonalds.co.kr/www/kor/main/main.do";
+			site[8] = "http://www.burgerking.co.kr/";
+			site[9] = "http://www.bonjuk.co.kr/main/juk_main2.asp";
+		
+			location.href = site[Math.floor(Math.random()*10)];
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="눌러봐" onclick="goSite();">
+</body>
+</html>

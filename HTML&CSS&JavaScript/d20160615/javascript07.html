@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function prt(){
+			var obj = document.getElementById("txt1");
+			console.dir(obj);
+			console.log(obj.id);
+			console.log(obj.value);
+			obj.value="바보바보바보야";
+		}
+	</script>
+</head>
+<body>
+	<!-- <input type="text" value="하하하" name="" id="txt1"> -->
+	<input type="text" placeholder="이름을 쓰세요" name="" id="txt1">
+	<!-- <input type="password" placeholder="********" name="" id="pwd"> -->
+	<input type="button" value="출력" id="btn" onclick="prt();">
+</body>
+</html>

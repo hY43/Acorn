@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>관리자 페이지 꾸미기</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			font-family:"돋움";
+		}
+		#wrapper{
+			width:100%;
+			/*margin:상 우 하 좌 ;*/
+			margin:2px auto 0 auto;
+		}
+		#logo{
+			width:1000px;
+			height:60px;
+			/*배경이미지 사용*/
+			background:url(../image/admin_logo.gif);
+			margin:auto;
+		}
+		#menuWrapper{
+			width:1000px;
+			height:25px;
+			font-size:12px;
+			margin: 0 auto; /*상하 좌우*/
+			background-color: #e0bbd8;
+		}
+		.menu{
+			color:black;
+			font-size:13px;
+			width:90px;
+			height:20px;
+			float:left;
+			background-color: #ffffff;
+			cursor: pointer;
+			text-align: center;
+			margin-left:15px;
+		}
+		.menu:hover{
+			color:#e0bbd8;
+			font-weight: bold;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<!-- div#wrapper>div#logo+div#menuWrapper -->
+	<div id="wrapper">
+		<div id="logo">
+			
+		</div>
+		<div id="menuWrapper">
+			<a href=""><div class="menu">회원관리</div></a>
+			<a href=""><div class="menu">상품관리</div></a>
+			<a href=""><div class="menu">주문관리</div></a>
+			<a href=""><div class="menu">배송관리</div></a>
+			<a href=""><div class="menu">댓글관리</div></a>
+			<a href=""><div class="menu">1:1문의</div></a>
+			<a href=""><div class="menu">접속통계</div></a>
+			<a href=""><div class="menu">공지사항관리</div></a>
+		</div>
+	</div>
+</body>
+</html>
