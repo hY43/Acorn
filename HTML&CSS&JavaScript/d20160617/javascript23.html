@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function selectValue(){
+			// console.dir(document.getElementById("prt"));
+			// if(document.getElementById("menu")[0].selected){
+			// 	document.getElementById("prt").innerText = document.getElementById("1").value;
+			// }else if(document.getElementById("menu")[1].selected){
+			// 	document.getElementById("prt").innerText = document.getElementById("2").value;
+			// }else if(document.getElementById("menu")[2].selected){
+			// 	document.getElementById("prt").innerText = document.getElementById("3").value;
+			// }else if(document.getElementById("menu")[3].selected){
+			// 	document.getElementById("prt").innerText = document.getElementById("4").value;
+			// }else if(document.getElementById("menu")[4].selected){
+			// 	document.getElementById("prt").innerText = document.getElementById("5").value;
+			// }
+
+			document.getElementById("prt").innerHTML = "<h3>"+document.getElementById("menu").value+"</h3>"
+		}
+	</script>
+</head>
+	
+<body>
+	<h1>좋아하는 연예인</h1>
+	<select name="" id="menu" onchange="selectValue();">
+		<option value="멋쪄요 오하윤" id="1">멋쪄요 오하윤</option>
+		<option value="러블리 오하윤" id="2">러블리 오하윤</option>
+		<option value="여친 오하윤" id="3">여친 오하윤</option>
+		<option value="형수 오하윤" id="4">형수 오하윤</option>
+		<option value="제수씨 오하윤" id="5">제수씨 오하윤</option>
+	</select>
+
+	<div id="prt"></div>
+</body>
+</html>

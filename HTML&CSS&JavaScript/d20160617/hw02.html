@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var context;
+		window.onload=function (){
+			var canvas = document.getElementById("MyCanvas");
+			context = canvas.getContext("2d");
+			context.beginPath();
+			
+			context.strokeStyle = "green";
+			context.fillStyle = "green";
+
+			// 테두리 사각형 생성
+			context.rect(100,100,400,350);
+			context.stroke();
+			
+			// 색 채워진 사각형 생성
+			context.fillRect(150,150,100,50);
+			context.fillRect(350,150,100,50);
+
+			context.rect(150,300,300,50);
+			context.stroke();
+			context.rect(150,350,300,50);
+			context.stroke();
+			context.closePath();
+		}
+	</script>
+	<style type="text/css">
+		canvas{
+			background-color:#eeeeee;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="MyCanvas" width="800" height="800"></canvas>
+</body>
+</html>

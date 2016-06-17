@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		canvas{
+			background-color: #eeeeee;
+		}
+	</style>
+	<script type="text/javascript">
+		var ctx;
+		// 카운터 변수 선언.
+		var counter = 0;
+		// 배경 이미지 객체
+		var bgImg = new Image();
+		// 이미지 소스
+		bgImg.src = "../images/bg.jpg";
+		// 토끼 이미지 객체
+		var rabbit1 = new Image();
+		var rabbit2 = new Image();
+		// 토끼 이미지 소스
+		rabbit1.src = "../images/rabbit1.png";
+		rabbit2.src = "../images/rabbit2.png";
+		// 토끼 좌표 x,y
+		var rabbitX = 200;
+		var rabbitY = 200;
+		// 윈도우가 로딩된 후에 함수 호출
+		window.onload = function(){
+			var canvas = document.getElementById("myCanvas");
+			ctx = canvas.getContext("2d");
+			drawScreen();
+			// 주기적으로 반복 실행
+			// window.setInterval(함수명, 시간간격) // 그 시간 간격으로 함수를 계속 호출한다.
+			window.setInterval(drawScreen,100)
+		}
+
+		function drawScreen(){
+			counter++;
+			
+			// ctx.drawImage(그릴객체, x, y, width, height)
+			// 배경 그리기
+			ctx.drawImage(bgImg,0,0,800,600);
+			// 토끼 그리기
+			if(counter%2==0){ // 토끼 그림을 달리는 것처럼 변경시키기 위한 % 연산
+				ctx.drawImage(rabbit1,rabbitX,rabbitY,100,100);	
+			}
+			
+			else{
+				ctx.drawImage(rabbit2,rabbitX,rabbitY,100,100);
+			}
+		}
+
+		function moveRabbit(d){
+			if(d==1)rabbitY-=10;
+			else if(d==2)rabbitX-=10;
+			else if(d==3)rabbitX+=10;
+			else rabbitY+=10;
+
+			drawScreen();
+		}
+
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="800" height="600"></canvas>
+	<br />
+
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="▲" id="up" onclick="moveRabbit(1);"><br/>
+	&nbsp;&nbsp;&nbsp;<input type="button" value="◀" id="left" onclick="moveRabbit(2);">
+	&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="▶" id="right" onclick="moveRabbit(3);"><br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="▼" id="down" onclick="moveRabbit(4);"><br/>
+</body>
+</html>

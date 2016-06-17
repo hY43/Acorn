@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var msg = []; // 배열 선언(자동으로 인덱스 수가 늘어남.)
+		function saveData(){
+			var txt1 = document.getElementById("txt1");
+			msg.push(txt1.value);
+			txt1.value="";
+			txt1.focus();
+			console.log(msg);
+		}
+		function prtData(){
+			// for(var i=0;i<msg.length;i++){
+			// 	console.log(msg[i]);
+			// }
+			var div = document.getElementById("txt2");
+			var data = "<ul>";
+			for(var i = 0;i<msg.length;i++){
+				data += "<li>" + msg[i] + "</li>";
+			}
+			data += "</ul>";
+			div.innerHTML = data;
+		}
+	</script>
+</head>
+<body>
+	<input type="text" name="" id="txt1">
+	<input type="button" value="저장" onclick="saveData();">
+	<input type="button" value="출력" onclick="prtData();">
+
+	<div id="txt2">
+		우리나라 만세
+	</div>
+</body>
+</html>

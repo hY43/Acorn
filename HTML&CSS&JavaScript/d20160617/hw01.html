@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 김유정, 허민석 객체를 생성
+		// name, age, gender, job
+		// printGender()
+
+		function Person(name, age, gender, job){
+			this.name = name;
+			this.age = age;
+			this.gender = gender;
+			this.job = job;
+			this.isAdult= function (){
+				var result;
+				if(this.age > 18){
+					result = "성인";
+				}else{	
+					result = "미성년";
+				}
+				console.log(this.name + "씨는 " + result + "성입니다.");
+			}
+		};
+
+		var hms = new Person("허민석", 27, "남", "취준생");
+		//onsole.log(hms);
+		hms.isAdult();
+		var kuj = new Person("김유정", 18, "여","배우");
+		kuj.isAdult();
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

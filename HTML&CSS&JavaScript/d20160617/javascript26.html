@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function isAdult(obj){
+			if(obj.age > 18){
+				result = "성인";
+			}else{
+				result = "미성년";
+			}
+			console.log(obj.name + "씨는 " + result + "입니다.");
+		}
+		var yjw = {
+			name: "양정원",
+			age: 28,
+			job: "필라테스 강사",
+			gender: "여",
+			isAdult:function (){
+				if(this.age > 18){
+					result = "성인";
+				}else{	
+					result = "미성년";
+				}
+				console.log(this.name + "씨는 " + result + "입니다.");
+			}
+		};
+		var m = {
+			name: "이몽룡",
+			age:15
+		};
+		yjw.isAdult(yjw);
+		yjw.isAdult(m);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
