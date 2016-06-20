@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		canvas{
+			background-color:#eeeeee;
+		}
+	</style>
+	<script type="text/javascript">
+
+		var ctx;
+		var counter=0;
+		var bgImg1 = new Image();
+		var bgImg2 = new Image();
+		var shipImg1 = new Image();
+		var shipImg2 = new Image();
+		var shipImg3 = new Image();
+		var shipImg4 = new Image();
+		var missileImg = new Image();
+		bgImg1.src = "../images/space.jpg";
+		bgImg2.src = "../images/space.jpg";
+		shipImg1.src = "../images/gunship4.png";
+		shipImg2.src = "../images/gunship5.png";
+		shipImg3.src = "../images/gunship6.png";
+		shipImg4.src = "../images/gunship7.png";
+		missileImg.src = "../images/missile1.png";
+
+		var bgY1 = 0;
+		var bgY2 = 600;
+		var shipX = 150;
+		var shipY = 500;
+		var missileX;
+		var missileY;
+		var missileFlag = true;
+		window.onload=function(){
+			var canvas = document.getElementById("myCanvas");
+			ctx = canvas.getContext("2d");
+
+			document.body.onkeydown=moveShip;
+			console.log(canvas);
+			window.setInterval(drawScreen,100);
+		}
+
+		function drawScreen(){
+
+			if(bgY1>600){
+				bgY1 = -600;
+				bgY2 = 0;
+			}else if(bgY2 > 600){
+				bgY2 = -600;
+				bgY1 = 0;
+			}
+			bgY1+=2;
+			bgY2+=2;
+
+			ctx.drawImage(bgImg1, 0, bgY1, 400, 600);
+			ctx.drawImage(bgImg2, 0, bgY2, 400, 600);
+			counter++;
+			if(counter%4==0) ctx.drawImage(shipImg1, shipX, shipY, 50, 50);
+			else if(counter%4==1) ctx.drawImage(shipImg2, shipX, shipY, 50, 50);
+			else if(counter%4==2) ctx.drawImage(shipImg3, shipX, shipY, 50, 50);
+			else ctx.drawImage(shipImg4, shipX, shipY, 50, 50	);    
+			if(missileFlag==false){
+				missileY-=10;
+				ctx.drawImage(missileImg, missileX, missileY, 10, 10);
+			}
+			if(missileY<0) missileFlag=true;
+		}
+		function moveShip(e){
+			if(e.keyCode==37) shipX-=10;
+			else if(e.keyCode==39) shipX+=10;
+			else if(e.keyCode==32){
+				if(missileFlag){
+					missileX = shipX+20;
+					missileY = shipY-10;
+					ctx.drawImage(missileImg, missileX, missileY, 10, 10);
+					missileFlag = false;
+				}else{
+					missileY-=2;
+					ctx.drawImage(missileImg, missileX, missileY, 10, 10);
+				}
+			}
+		}	
+	</script>
+</head>
+<body>
+	<canvas width="400" height="600" id="myCanvas"></canvas>
+</body>
+</html>

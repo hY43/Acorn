@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		canvas{
+			background-color: #eeeeee;
+		}
+	</style>
+	<script type="text/javascript">
+		var ctx;
+		var counter = 0;
+		var bgImg = new Image();
+		var bgImg2 = new Image();
+		var run1 = new Image();
+		var run2 = new Image();
+		var run3 = new Image();
+		var jumpCount=0;
+		var goldImg = new Image();
+		var silverImg = new Image();
+
+		bgImg.src = "../images/bg1.jpg";
+		bgX = 0;
+		bgImg2.src = "../images/bg2.jpg";
+		bgX2=800;
+		run1.src = "../images/run1.png";
+		run2.src = "../images/run2.png";
+		run3.src = "../images/run3.png";
+
+		goldImg.src = "../images/gold.png";
+		silverImg.src = "../images/silver.png";
+
+		var money = [];
+		var moneyX = 600;
+		var runX = 0;
+		var runY = 350;
+
+		var jumpFlag = false;
+
+		window.onload = function(){
+			var canvas = document.getElementById("myCanvas");
+			ctx = canvas.getContext("2d");
+			document.body.onkeydown=charMove;
+			window.setInterval(drawScreen,100);
+			window.setInterval(showCoin,100);
+		}
+
+		function showCoin(){
+
+		}
+
+		function drawScreen(){
+			counter++;
+			if(bgX==-800){
+				bgX=800;
+				bgX2=0;
+			}else if(bgX2==-800){
+				bgX2=800;
+				bgX=0;
+			}
+			bgX-=2;
+			bgX2-=2;
+
+			ctx.drawImage(bgImg,bgX,0,800,600);
+			ctx.drawImage(bgImg,bgX2,0,800,600);
+			//ctx.drawImage(goldImg,moneyX,Math.floor(Math.random()*300)+300,50,50);
+			if(jumpFlag==false){
+				if(counter%3==0) ctx.drawImage(run1,runX,runY,100,100);
+				else if(counter%2==0) ctx.drawImage(run2,runX,runY,100,100);
+				else ctx.drawImage(run3,runX,runY,100,100);
+			}else{
+				jumpCount++
+				if(jumpCount<10){
+					// runX+=10;
+					runY-=10;
+				}else if(jumpCount<20){
+					// runX+=10;
+					runY+=10;
+				}else{
+					jumpCount=0;
+					jumpFlag=false;
+				}
+				if(counter%3==0) ctx.drawImage(run1,runX,runY,100,100);
+				else if(counter%2==0) ctx.drawImage(run2,runX,runY,100,100);
+				else ctx.drawImage(run3,runX,runY,100,100);
+			}
+
+		}
+
+		function charMove(e){
+			jumpCount=0;
+			if(jumpFlag == false){
+				if(e.keyCode==38)runY-=10;
+				else if(e.keyCode==37) runX-=10;
+				else if(e.keyCode==39) runX+=10;
+				else if(e.keyCode==40) runY+=10;	
+				else if(e.keyCode==32) jumpFlag=true;
+			}	
+
+			drawScreen();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="800" height="600" ></canvas>
+</body>
+</html>

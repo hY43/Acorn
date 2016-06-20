@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		canvas{
+			background-color: #eeeeee;
+		}
+		*{
+			margin:0;
+		}
+	</style>
+	<script type="text/javascript">
+		var ctx;
+		// 카운터 변수 선언.
+		var counter = 0;
+		// 배경 이미지 객체
+		var bgImg = new Image();
+		var bgImg2 = new Image();
+		// 이미지 소스
+		bgImg.src = "../images/bg.jpg";
+		bgImg2.src = "../images/bg.jpg";
+		// 배경 좌표 변수
+		var bgX=0;
+		var bgX2=800;
+
+		// 토끼 이미지 객체
+		var rabbit1 = new Image();
+		var rabbit2 = new Image()
+		// 토끼 이미지 소스
+		rabbit1.src = "../images/rabbit1.png";
+		rabbit2.src = "../images/rabbit2.png";
+		// 토끼 좌표 x,y
+		var rabbitX = 200;
+		var rabbitY = 200;
+
+		// 조준경 이미지 객체
+		var snipeImg = new Image();
+		// 조준경 이미지 소스
+		snipeImg.src = "../images/snipe.png";
+		// 조준경 좌표
+		var snipeX = 500;
+		var snipeY = 200;
+
+		// 배경음악 객체
+		var bgMusic = new Audio("../sounds/backsound.mp3");
+
+		// 총소리 객체
+		var gunSound = new Audio("../sounds/fire.wav");
+
+		// 맞으면 비명
+		var scream = new Audio("../sounds/scream.wav");
+
+		// 재장전 소리 객체
+		var reloadSound = new Audio("../sounds/reload.wav");
+
+		// 잔탄 객체
+		var bulletImage = new Image();
+		bulletImage.src = "../images/bullet.png";
+		bulletFlag = true;
+
+		// 총알 구멍 객체
+		var holeX;
+		var holeY;
+		var holeImage = new Image();
+		holeImage.src = "../images/hole.png";
+
+		// 총알 구멍 배열 만들기
+		// 이전 총알 구멍을 계속 그 자리에 남기기 위해 배열로 생성
+		var holes = [];
+
+		// 총의 반동 변수
+		var reboundY = 0;
+
+		// 재장전 여부를 나타내는 변수
+		var isReload = false;
+
+		// 점수 변수
+		var score = 0;
+
+		function moveSnipe(e){
+			// 마우스의 움직임에 따라 조준경이 움직이도록 하기 위한 함수.
+			//console.dir(e.x + ":" + e.y);
+			snipeX = e.x-50;
+			snipeY = e.y-50;
+		}
+		function playMusic(e){
+			// 배경 음악을 연주하기 위한 함수
+			bgMusic.play();
+			console.dir(bgMusic);
+		}
+		function stopMusic(e){
+			// 배경 음악을 중지 시키기 위한 함수
+			bgMusic.currentTime=0; // 음악 처음으로 되감기.
+			bgMusic.pause(); // 음악 정지
+		}
+		function pythagoras(x1,y1,x2,y2){
+			// 두 점간의 거리를 반환할 함수
+			return Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+		}
+		function fireGun(e){
+			if(isReload) return;
+			isReload=true;
+
+			reboundY=50;
+			// 총을 발사하여 토끼를 맞추기 위한 함수
+			gunSound.currentTime=0;
+			gunSound.play();
+			// 토끼가 맞으면, 총알 객체 생성
+			var dis = pythagoras(e.x, e.y, rabbitX+50, rabbitY+50);
+			if(dis<50){
+				// 토끼의 좌표를 기준으로 상대 좌표 값을 구하기
+				var relX = e.x - rabbitX;
+				var relY = e.y - rabbitY;
+				// 총알의 위치를 담을 객체 생성
+				var hole = {
+					"X":relX,
+					"Y":relY
+				};
+				holes.push(hole); // 배열에 총알 객체 넣기
+				setTimeout(function(){
+					scream.currentTime=0;
+					scream.play();
+				}, 500)
+
+				score+=100;
+			}
+			bulletFlag=false;
+		}
+		// 윈도우가 로딩된 후에 함수 호출
+		window.onload = function(){
+			var canvas = document.getElementById("myCanvas");
+			ctx = canvas.getContext("2d");
+
+			var bgmon = document.getElementById("bgmon");
+			bgmon.onclick=playMusic; // ID가 bgmon 버튼이 클릭 되었을 때 함수를 실행해라.
+			var bgmoff = document.getElementById("bgmoff");
+			bgmoff.onclick=stopMusic;
+
+			canvas.onmousemove = moveSnipe;
+			canvas.onmousedown = fireGun;
+			// document.body.onkeydown=함수명 // 키보드를 누르면 함수가 호출
+			document.body.onkeydown=moveRabbit;
+			// 주기적으로 반복 실행
+			// window.setInterval(함수명, 시간간격) // 그 시간 간격으로 함수를 계속 호출한다.
+			window.setInterval(drawScreen,100)
+		}
+
+		function drawScreen(){
+			counter++;
+			
+			// ctx.drawImage(그릴객체, x, y, width, height)
+			// 배경 그리기
+			// 그냥 2개의 배경을 이어 붙이게 되면 두개의 배경이 종료되는 순간 토끼의 잔상이 남기 시작한다.
+			// 때문에 한개 배경이 끝나는 지점, 즉  x좌표가 -800이 되면 다시 좌측의 시작 지점인 800으로 지정해서 다시 그린다.
+			if(bgX<=-800){
+				bgX=800;
+				bgX2=0;
+			}
+			if(bgX2<=-800){
+				bgX2=800;
+				bgX=0;
+			}
+			// 배경화면이 움직이는 효과를 주기 위한 X 좌표 변경.
+			bgX-=2;
+			bgX2-=2;
+			
+			// 배경 화면 그리기
+			ctx.drawImage(bgImg,bgX,0,800,600);
+			ctx.drawImage(bgImg2,bgX2,0,800,600);
+
+			// 토끼 그리기
+			if(counter%2==0){ // 토끼 그림을 달리는 것처럼 변경시키기 위한 % 연산
+				ctx.drawImage(rabbit1,rabbitX,rabbitY,100,100);	
+			}
+			
+			else{
+				ctx.drawImage(rabbit2,rabbitX,rabbitY,100,100);
+			}
+
+			
+			for(var i=0;i<holes.length;i++){
+				var h = holes[i];
+				ctx.drawImage(holeImage,h.X+rabbitX-5,h.Y+rabbitY-5,10,10);	
+			}
+
+			// 배경 보다 먼저 그리게 되면 배경에 덧씌워져서 보이지 않으므로 배경을 그린 후에 조준경을 그려야 한다.
+			ctx.drawImage(snipeImg,snipeX,snipeY-reboundY,100,100);
+
+			// 게임 정보 출력
+			ctx.font = "50px 고딕";
+			ctx.fillStyle="red";
+			ctx.fillText("SCORE: " + score, 270, 50);
+
+			if(reboundY>0){
+				reboundY-=5;
+				if(reboundY<=0){
+					reboundY=0;
+					isReload=false;	
+					bulletFlag=true;
+					reloadSound.currentTime=0;
+					reloadSound.play();
+				}
+			}
+			
+			if(bulletFlag){
+				ctx.drawImage(bulletImage, 700,200, 80,20);	
+			}
+			
+
+		}
+
+		function moveRabbit(e){
+			// 키보드 화살표 버튼을 누름에 따라 토끼를 움직이게 하기 위한 함수.
+			if(e.keyCode==38)rabbitY-=10;
+			else if(e.keyCode==37)rabbitX-=10;
+			else if(e.keyCode==39)rabbitX+=10;
+			else if(e.keyCode==40) rabbitY+=10;
+
+			drawScreen();
+		}
+
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="800" height="600"></canvas><br />
+	<input type="button" id="bgmon" value="배경음악 ON">
+	<input type="button" id="bgmoff" value="배경음악 OFF">
+</body>
+</html>
