@@ -47,7 +47,9 @@
 		}
 
 		function showCoin(){
-
+			var money = {
+				"X" : 
+			}
 		}
 
 		function drawScreen(){
@@ -64,37 +66,30 @@
 
 			ctx.drawImage(bgImg,bgX,0,800,600);
 			ctx.drawImage(bgImg,bgX2,0,800,600);
-			//ctx.drawImage(goldImg,moneyX,Math.floor(Math.random()*300)+300,50,50);
-			if(jumpFlag==false){
-				if(counter%3==0) ctx.drawImage(run1,runX,runY,100,100);
-				else if(counter%2==0) ctx.drawImage(run2,runX,runY,100,100);
-				else ctx.drawImage(run3,runX,runY,100,100);
-			}else{
+
+			if(jumpFlag==true){
 				jumpCount++
 				if(jumpCount<10){
-					// runX+=10;
-					runY-=10;
+					runX+=5;
+					runY-=19;
 				}else if(jumpCount<20){
-					// runX+=10;
-					runY+=10;
+					runX+=5;
+					runY+=17;
 				}else{
 					jumpCount=0;
 					jumpFlag=false;
 				}
-				if(counter%3==0) ctx.drawImage(run1,runX,runY,100,100);
-				else if(counter%2==0) ctx.drawImage(run2,runX,runY,100,100);
-				else ctx.drawImage(run3,runX,runY,100,100);
 			}
-
+			if(counter%3==0) ctx.drawImage(run1,runX,runY,100,100);
+			else if(counter%2==0) ctx.drawImage(run2,runX,runY,100,100);
+			else ctx.drawImage(run3,runX,runY,100,100);
 		}
 
 		function charMove(e){
 			jumpCount=0;
 			if(jumpFlag == false){
-				if(e.keyCode==38)runY-=10;
-				else if(e.keyCode==37) runX-=10;
+				if(e.keyCode==37) runX-=10;
 				else if(e.keyCode==39) runX+=10;
-				else if(e.keyCode==40) runY+=10;	
 				else if(e.keyCode==32) jumpFlag=true;
 			}	
 
