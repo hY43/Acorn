@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#id1").on("click",function(){
+			$("#answer").show(); // id가 id1인 Tag를 클릭하면 id가 answer인 Tag를 보여줘라.
+			$("#wrong").hide(); // id가 id1인 Tag를 클릭하면 id가 wrong인 Tag를 숨겨라.
+		});
+		$("#id2, #id3, #id4, #id5").on("click",function(){
+			$("#wrong").show(); // id가 id2, id3, id3, id5 중 하나인 Tag를 클릭하면 id가 wrong인 Tag를 보여줘라.
+			$("#answer").hide(); // id가 id2, id3, id3, id5 중 하나인 Tag를 클릭하면 id가 answer인 Tag를 숨겨라.
+		});
+	});
+</script>
+</head>
+<body>
+	<!-- input:button[value='1번'] -->
+	<input type="button" value="1번" />
+	<!-- input:button[value='$번']*5 -->
+	<input type="button" value="1번" id="id1" />
+	<input type="button" value="2번" id="id2"/>
+	<input type="button" value="3번" id="id3"/>
+	<input type="button" value="4번" id="id4"/>
+	<input type="button" value="5번" id="id5"/>
+	
+	<div id="q">
+		<div>7월 7일에 만나는 커플</div>
+	</div>
+	<div>
+		1. 견우와 직녀
+		2. 권민석과 허민석
+		3. 민석*2
+		4. 박보영과 이청우
+	</div>
+	<!-- 박스를 만들되 display속성을 none으로 주어 보이지 않게 함 --> 
+	<div id="answer" style="display:none">
+	<p>정답은 1번</p>
+	</div>
+	<!-- 박스를 만들되 display속성을 none으로 주어 보이지 않게 함 -->
+	<div id="wrong" style="display:none">
+	<img src="../images/x.jpg" alt="땡"/>
+	</div>	
+</body>
+</html>

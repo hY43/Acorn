@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	/* $("input") : input Element 객체를 jquery화 시킨 것.*/
+	// $("input")[0] == (var input = document.getElementById("rabbit"))
+	// $("input").on("click", 함수명) : input을 클릭하면 함수가 동작.
+	/* $("input").on("click",function(){
+		$("img").css("width","400px").css("height","203px");
+	});
+	$("button").on("click",function(){
+		$("img").css("width","200px").css("height","203px");		
+	}); */
+	
+	// Tag에서 onclick을 쓰는 것보다는 script Tag 내에서 작업하는 것이 최근 트랜드이므로 
+	// 같은 효과를 내는 JQuery를 사용.
+	// 아래의 click 대신 mousemove 등의 기능을 모두 사용 가능하다.
+	$("input[value='뚱뚱해져라']").on("click",function(){
+		$("img").css("width","400px").css("height","203px");
+	}); // input Tag 내의 value가 "뚱뚱해져라"인 Tag를 클릭하면 익명 함수를 실행. 
+	$("input[value='날씬해져라']").on("click",function(){
+		$("img").css("width","200px").css("height","203px");
+	}); // input Tag 내의 value가 "날씬해져라"인 Tag를 클릭하면 익명 함수를 실행.
+});
+
+</script>
+</head>
+<body>
+<!-- 토끼 이미지 그리기
+버튼 1: 뚱뚱하게 하기
+버튼 2: 홀쭉하게 하기 -->
+
+<div><img src="../images/rabbit1.png" alt="토끼" id="rabbit" width="100"/></div>
+<input type="button" value="뚱뚱해져라" id="btn1"/>
+<!-- <button>날씬해져라</button> -->
+<input type="button" value="날씬해져라" id="btn2"/>
+</body>
+</html>

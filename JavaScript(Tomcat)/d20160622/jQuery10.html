@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	var news = [
+		"1. 박xx, wc 좋아해..",
+		"2. 이xx, 슈퍼맨이 돌아왔다 출연 결심..",
+		"3. 김xx, 할아버지를 좋아해..",
+		"4. 민석씨, 사실 남자친구가 있음",
+		"5. 반장 다이어트 실패.."
+	]; // 뉴스 목록 입력을 위한 배열 생성.
+	var index = 0; // 배열로의 접근을 위한 변수 index 선언 및 초기화.
+	var timer; // clearInterval 함수 실행을 위해 setInterval 함수의 리턴 값을 받아야하는데 이 리턴 값을 저장하기 위한 변수 timer 선언.
+	$(function(){
+		// 뉴스 보기 버튼을 누르면 showNews 함수를 호출
+		$("input[value='뉴스보기']").on("click", function(){
+			timer = setInterval(showNews,1000); // 1초마다 뉴스를 변경하기 위한 setInterval 함수 실행.
+		});
+		$("input[value='뉴스중지']").on("click", function(){
+			clearInterval(timer); // setInterval 함수를 중지 시키기 위한 clearInterval 함수 실행.
+		});
+	});
+	function showNews(){
+		// 뉴스를 순차적으로 보여주기 위한 함수.
+		$("#topNews").html("<h3>" + news[index++] + "</h3>"); // index를 1씩 증가시키면서 배열에 저장된 뉴스를 차례로 보여준다.
+		if(index==news.length) index = 0; // 배열의 요소를 모두 출력하면 다시 0번 요소부터 시작하게 하기 위한 조건문.
+	}
+</script>
+</head>
+<body>
+	<div id="topNews"></div>
+	<input type="button" value="뉴스보기" />
+	<input type="button" value="뉴스중지" />
+	
+</body>
+</html>

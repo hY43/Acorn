@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	var move = 0;
+	function autoMove(){
+		move+=10;
+		$("img").css("margin-left", move+"px");
+		// 이미지가 왼쪽으로 10만큼씩 이동하는 효과를 주기 위해 margin-left 사용
+	}
+	// onload 기능을 하는 무명 함수
+	$(function(){
+		$("input[value='달료~!']").on("click", function(){
+			// value가 "달료~!"인 input Tag를 클릭하면 실행되는 익명 함수.
+			setInterval(autoMove, 300);	
+			// 0.3 초마다 자동으로 autoMove 함수를 실행한다.
+		});
+	});
+	
+</script>
+</head>
+<body>
+<!-- 버튼을 누르면 이미지가 오른쪽으로 10만큼 이동 -->
+	<input type="button" value="달료~!" />
+
+	<div><img src="../images/rabbit1.png" alt="토끼" /></div>
+</body>
+</html>

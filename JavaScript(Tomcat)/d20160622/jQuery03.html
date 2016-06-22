@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.0.0.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		// Java script
+		var h = document.getElementById("h"); // id가 h인 Element를 가져와서 변수 h에 대입.
+		console.dir(h); // h 객체의 구조를 파악하기 위한 console.dir
+		h.style.color="yellow"; // h의 글자 색 변경.
+		// JQuery
+		$(function(){
+			// JQuery에서의 CSS 사용.
+			$("h3").css("color","green"); // h3 Tag내 글자 색을 초록 색으로 변경한다.
+			$("h3").css("background-color","red"); // h3 Tag 내의 배경 색을 붉은 색으로 변경한다.
+			// JQuery의 함수는 실행 후, 자기 자신의 객체를 리턴하도록 만들어져있기 때문에 위의 코드는 아래와 같이 사용도 가능하다.
+			$("h3").css("color","white").css("background-color","black");
+			// h3 Tag 내의 글자 색을 하얀색으로, 배경 색을 검은 색으로 변경한다. 
+			
+			// css 내부에 JSON 방식으로 작성할 수 있다.
+			$("h3").css({
+				"color":"red",
+				"background":"blue"});
+			// h3 Tag 내의 글자 색을 붉은 색, 배경 색을 파랑색으로 변경한다.
+			
+			$("#img1").css("width","500px").css("height","500px");
+			// id가 img1인 Tag를 찾아 그 너비를 500 px, 높이를 500px로 변경한다.
+		});
+		
+	}
+</script>
+<!-- h3 글자의 배경색을 노랑색으로 변경 -->
+</head>
+<body>
+	<h3 id="h">제이쿼리 테스트</h3>
+	
+	<div><img src="../images/test.png" id="img1" alt="한효주"/></div>
+</body>
+</html>

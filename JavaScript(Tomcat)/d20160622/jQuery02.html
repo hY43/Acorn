@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- JQuery를 사용하기 위한 jquery 파일 적용 -->
+<script type="text/javascript" src="../js/jquery-3.0.0.js"></script>
+</head>
+<body>
+	<div id="box1">
+		<p>오늘은 수요일입니다.</p>
+	</div>
+	<script type="text/javascript">
+		var box1 = document.getElementById("box1"); // id가 box1인 Element를 가져와서 box1에 대입. 
+		box1.innerHTML = "하이"; // box 내에 HTML 입력
+		console.dir($("#box1")); // $(CSS선택자)
+		// box1 아이디를 갖는div element 객체 == document.getElementById("box1")
+		// $("#box1") == document.getElementById("box1")를 JQuery로 감싼 객체
+		$("#box1").html("<h1>쉬는 시간</h1>");
+		/* $(선택자).action */
+		//선택자: id, class, tag
+	</script>
+</body>
+</html>

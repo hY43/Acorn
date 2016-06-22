@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	// a Tag의 글자색을 노랑색, 배경색을 빨강색으로 변경.
+	/* $(function(){
+		$(".naver").css("color","yellow").css("background-color","red");
+		$(".naver").css({
+			"color":"white",
+			"background-color":"black"
+		});
+	}); */
+	// Target 속성이 있는 태그만 색을 변경해라.
+	/* 	$(function() {
+		$("a[target]").css("color", "blue").css("background-color", "red");
+	}); */
+	// 속성 타겟의 값이 _blank가 아닌 태그만.
+ 	/* $(function() {
+		$("a[target!='_blank']").css("color", "yellow").css("background-color", "red");
+	});  */
+</script>
+</head>
+<body>
+	<a href="http://www.naver.com" class="naver">네이버</a>
+	<a href="http://www.daum.net">다음</a>
+	<a href="http://www.naver.com" class="naver" target="_blank">네이버</a>
+	<a href="http://www.daum.net" target="_blank">다음</a>
+	<!-- Target _blank 속성은 새창을 열어서 연결해라. -->
+</body>
+</html>
