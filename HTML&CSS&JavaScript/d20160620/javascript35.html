@@ -9,6 +9,10 @@
 		}
 	</style>
 	<script type="text/javascript">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e6499d44864437ca4bb102e29dd7ab884e76660
 		var ctx; // 컨텍스트 변수 선언
 		var counter=0; // 비행기 그림을 교차시키기 위한 카운터 변수 선언
 		// 배경 객체 생성, 마치 비행기가 날아가는 것과 같은 효과를 주기 위해 배경 2개를 생성하여 이어붙임
@@ -22,6 +26,10 @@
 		// 미사일 객체 생성
 		var missileImg = new Image();
 		var missile = [];
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e6499d44864437ca4bb102e29dd7ab884e76660
 		// 생성된 객체에 이미지를 붙임.
 		bgImg1.src = "../images/space.jpg";
 		bgImg2.src = "../images/space.jpg";
@@ -30,6 +38,10 @@
 		shipImg3.src = "../images/gunship6.png";
 		shipImg4.src = "../images/gunship7.png";
 		missileImg.src = "../images/missile1.png";
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e6499d44864437ca4bb102e29dd7ab884e76660
 		// 배경 화면의 처음 시작 좌표
 		var bgY1 = 0;
 		var bgY2 = 600;
@@ -41,6 +53,10 @@
 		var missileY;
 		// 
 		var missileFlag = true;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e6499d44864437ca4bb102e29dd7ab884e76660
 		// 윈도우가 모두 로드된 후, 실행할 작엄을 onload를 통해 넣어둠.
 		window.onload=function(){
 			var canvas = document.getElementById("myCanvas");
@@ -66,6 +82,10 @@
 			else if(counter%4==1) ctx.drawImage(shipImg2, shipX, shipY, 50, 50);
 			else if(counter%4==2) ctx.drawImage(shipImg3, shipX, shipY, 50, 50);
 			else ctx.drawImage(shipImg4, shipX, shipY, 50, 50	); 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e6499d44864437ca4bb102e29dd7ab884e76660
 			for(var i=0;i<missile.length;i++){
 				if(missile[i].missileFlag==false){
 					missile[i].Y-=10;
@@ -81,7 +101,13 @@
 				"Y":missileY,
 				"missileFlag":missileFlag
 			};
+<<<<<<< HEAD
 			missile.push(aMissile);
+=======
+
+			missile.push(aMissile);
+
+>>>>>>> 4e6499d44864437ca4bb102e29dd7ab884e76660
 			for(var i=0;i<missile.length;i++){
 				if(missile[i].missileFlag){
 					missile[i].X = shipX+20;
@@ -94,6 +120,10 @@
 				}
 			}
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4e6499d44864437ca4bb102e29dd7ab884e76660
 		function moveShip(e){
 			if(e.keyCode==37) shipX-=10;
 			else if(e.keyCode==39) shipX+=10;

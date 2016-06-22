@@ -16,6 +16,8 @@
 		var ctx;
 		// 카운터 변수 선언.
 		var counter = 0;
+
+		/* 배경 관련 객체 생성 및 초기화 */
 		// 배경 이미지 객체
 		var bgImg = new Image();
 		var bgImg2 = new Image();
@@ -26,6 +28,7 @@
 		var bgX=0;
 		var bgX2=800;
 
+		/* 토끼 관련 객체 생성 및 초기화 */
 		// 토끼 이미지 객체
 		var rabbit1 = new Image();
 		var rabbit2 = new Image()
@@ -36,6 +39,7 @@
 		var rabbitX = 200;
 		var rabbitY = 200;
 
+		/* 조준경 관련 객체 생성 및 초기화 */
 		// 조준경 이미지 객체
 		var snipeImg = new Image();
 		// 조준경 이미지 소스
@@ -44,23 +48,13 @@
 		var snipeX = 500;
 		var snipeY = 200;
 
-		// 배경음악 객체
-		var bgMusic = new Audio("../sounds/backsound.mp3");
-
-		// 총소리 객체
-		var gunSound = new Audio("../sounds/fire.wav");
-
-		// 맞으면 비명
-		var scream = new Audio("../sounds/scream.wav");
-
-		// 재장전 소리 객체
-		var reloadSound = new Audio("../sounds/reload.wav");
-
+		/* 현재 잔탄 출력을 위한 객체 생성 및 초기화 */
 		// 잔탄 객체
 		var bulletImage = new Image();
 		bulletImage.src = "../images/bullet.png";
 		bulletFlag = true;
 
+		/* 총알 관련 객체/배열 생성 및 초기화 */
 		// 총알 구멍 객체
 		var holeX;
 		var holeY;
@@ -79,6 +73,16 @@
 
 		// 점수 변수
 		var score = 0;
+
+		/* 음향 효과 관련 객체 생성 및 초기화 */
+		// 배경음악 객체
+		var bgMusic = new Audio("../sounds/backsound.mp3");
+		// 총소리 객체
+		var gunSound = new Audio("../sounds/fire.wav");
+		// 맞으면 비명
+		var scream = new Audio("../sounds/scream.wav");
+		// 재장전 소리 객체
+		var reloadSound = new Audio("../sounds/reload.wav");
 
 		function moveSnipe(e){
 			// 마우스의 움직임에 따라 조준경이 움직이도록 하기 위한 함수.
@@ -101,13 +105,16 @@
 			return Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
 		}
 		function fireGun(e){
-			if(isReload) return;
-			isReload=true;
-
-			reboundY=50;
 			// 총을 발사하여 토끼를 맞추기 위한 함수
+			if(isReload) return; // 재장전 중이라면 총을 못쏘도록 바로 return
+			isReload=true; // 총 한발을 발사하면 재장전되기 전까지는 위의 분기문을 통해 return 하기 위한 isReload 값 변경.
+
+			reboundY=50; // 사격 후 반동을 주기 위해 더할 좌표값 저장.
+			
+			// 사격 소리를 입히기 위해 gunSound의 음향을 처음으로 돌리고 play
 			gunSound.currentTime=0;
 			gunSound.play();
+
 			// 토끼가 맞으면, 총알 객체 생성
 			var dis = pythagoras(e.x, e.y, rabbitX+50, rabbitY+50);
 			if(dis<50){
@@ -120,27 +127,34 @@
 					"Y":relY
 				};
 				holes.push(hole); // 배열에 총알 객체 넣기
+				// 총을 쏜 후 0.5 초뒤에 토끼 으악!
 				setTimeout(function(){
 					scream.currentTime=0;
 					scream.play();
 				}, 500)
 
+				// 토끼를 맞추면 점수 100점 획득.
 				score+=100;
 			}
+			// 총을 재장전 하는 동안 잔탄으 0임을 보여주기 위한 Flag 변환
 			bulletFlag=false;
 		}
-		// 윈도우가 로딩된 후에 함수 호출
+		// 윈도우가 모두 로딩된 후에 실행될 함수를 window.onload를 사용하여 실행 시키는데, 윈도우 로딩 후 한번만 실행되므로 익명 함수로 실행.
 		window.onload = function(){
+			// convas 변수를 선언한 후, myCanvas를 아이디로 갖는 객체를 대입.
 			var canvas = document.getElementById("myCanvas");
+			// 컨텍스트 변수에 선/원을 표현하기 위한 "2d" 인자를 넣고 대입한다.
 			ctx = canvas.getContext("2d");
 
+			// BGMON 버튼을 누르면 해당 객체 정보를 불러와서 변수에 대입.
 			var bgmon = document.getElementById("bgmon");
 			bgmon.onclick=playMusic; // ID가 bgmon 버튼이 클릭 되었을 때 함수를 실행해라.
+			// 물론 태그 상에 onclick 속성을 사용하여 실행 시킬 수도 있지만 현 추세는 Body에는 태그만 넣는 것이 추세이므로 되도록 위의 함수를 이용.
 			var bgmoff = document.getElementById("bgmoff");
 			bgmoff.onclick=stopMusic;
 
-			canvas.onmousemove = moveSnipe;
-			canvas.onmousedown = fireGun;
+			canvas.onmousemove = moveSnipe; // 캔버스 위에서 마우스가 움직이면 moveSnipe 함수를 실행한다.
+			canvas.onmousedown = fireGun; // 캔버스 위에서 마우스를 클릭하면 fireGun 함수가 실행된다.
 			// document.body.onkeydown=함수명 // 키보드를 누르면 함수가 호출
 			document.body.onkeydown=moveRabbit;
 			// 주기적으로 반복 실행
@@ -174,13 +188,12 @@
 			// 토끼 그리기
 			if(counter%2==0){ // 토끼 그림을 달리는 것처럼 변경시키기 위한 % 연산
 				ctx.drawImage(rabbit1,rabbitX,rabbitY,100,100);	
-			}
-			
-			else{
+			}else{
 				ctx.drawImage(rabbit2,rabbitX,rabbitY,100,100);
 			}
 
-			
+			// 과거의 총알 구멍이 사라지지 않고 그 자리에 남아있도록 하기 위한 배열
+			// 그리고 그 배열을 for문을 사용하여 출력
 			for(var i=0;i<holes.length;i++){
 				var h = holes[i];
 				ctx.drawImage(holeImage,h.X+rabbitX-5,h.Y+rabbitY-5,10,10);	
@@ -194,17 +207,22 @@
 			ctx.fillStyle="red";
 			ctx.fillText("SCORE: " + score, 270, 50);
 
+			// 총을 쏘면 반동을 준다.
 			if(reboundY>0){
-				reboundY-=5;
+				reboundY-=5; // y값을 위로 -5만큼 주어 반동 효과를 낸다.
 				if(reboundY<=0){
+					// 총이 원래 자리로 돌아오면 총을 다시 쏠 수 있도록원래의 값 복원
 					reboundY=0;
 					isReload=false;	
 					bulletFlag=true;
+
+					// 재장전 음향 재생.
 					reloadSound.currentTime=0;
 					reloadSound.play();
 				}
 			}
 			
+			// 잔탄을 화면상에 출력
 			if(bulletFlag){
 				ctx.drawImage(bulletImage, 700,200, 80,20);	
 			}
