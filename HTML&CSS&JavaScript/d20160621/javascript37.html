@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+		}
+		canvas {
+			background-color: #eeeeee;
+			margin:0;
+		}
+	</style>
+	<script type="text/javascript">
+		var canvas;
+
+		var ctx;
+		var count = 0;
+		var eCount = 0;
+		// 우주배경 이미지 객체
+		var bgImg1 = new Image();
+		var bgImg2 = new Image();
+		// 배경 이미지 소스
+		bgImg1.src = "../images/space.jpg";
+		bgImg2.src = "../images/space.jpg";
+		var bgY1 = 0;
+		var bgY2 = -600;
+		// 비행기 이미지 객체
+		var ship1 = new Image();
+		var ship2 = new Image();
+		var ship3 = new Image();
+		var ship4 = new Image();
+		// 적 비행기 이미지 객체
+		var enemyShip1 = new Image();
+		var enemyShip2 = new Image();
+		var enemyShip3 = new Image();
+		var enemyShip4 = new Image();
+
+		// 적 비행기 속도
+		var enemySpeed = 5;
+		// 소스
+		ship1.src = "../images/gunship4.png";
+		ship2.src = "../images/gunship5.png";
+		ship3.src = "../images/gunship6.png";
+		ship4.src = "../images/gunship7.png";
+
+		enemyShip1.src = "../images/gunship0.png";
+		enemyShip2.src = "../images/gunship1.png";
+		enemyShip3.src = "../images/gunship2.png";
+		enemyShip4.src = "../images/gunship3.png";
+		
+		// 비행기 좌표 변수
+		var shipX = 250;
+		var shipY = 500;
+
+		// 적 비행기 좌표 변수
+		var enemyShipX;
+		var enemyShipY = 50;
+
+		var enemyArray = [];
+
+		// 미사일 이미지 객체
+		var missileImg = new Image();
+		missileImg.src = "../images/missile1.png";
+
+		var missileSound = new Audio("../sounds/missile.wav");
+		var ex = new Audio("../sounds/explosion.wav");
+		// 미사일의 y좌표 변수
+		var missileX = -100;
+		var missileY = 500;
+
+		var missileArray = [];
+
+		var gameFlag = true;
+
+		var cnt = 0;
+		var score=0;
+
+		function moveShip(e){
+			shipX = e.x;
+			shipY = e.y;
+		}
+		function fireMissile(e){
+			cnt++;
+			var m = {
+				"X":shipX,
+				"Y":shipY
+			};
+			if(cnt%2==0) m.X+=25;
+			else m.X-=25;
+			missileArray.push(m);
+			missileSound.currentTime=0;
+			missileSound.play();
+		}
+		function showenemyShip(){
+			var e = {
+				"X":Math.floor(Math.random()*350),
+				"Y":enemyShipY,
+				"hp":100
+			};
+			enemyArray.push(e);
+		}
+		window.onload = function(){ // play game
+			canvas = document.getElementById("myCanvas");
+			ctx = canvas.getContext("2d");
+
+			canvas.onmousemove = moveShip;
+			canvas.onmousedown = fireMissile;
+			setInterval(drawScreen,30);
+		}
+		function drawScreen(){
+			count++;						
+			bgY1+=2;
+			bgY2+=2;
+
+			if(count%30==0) showenemyShip();
+			// 미사일 이동
+			missileY -=5;
+
+			// ctx.drawImage(이미지객체, x, y, 너비, 높이);
+			ctx.drawImage(bgImg1, 0, bgY1, 400, 600);
+			ctx.drawImage(bgImg2, 0, bgY2, 400, 600);
+			if(bgY1>=600)
+				bgY1 = -600;
+			if(bgY2>=600)
+				bgY2 = -600;
+			// 비행기 그리기)
+			if(count%4==0)
+				ctx.drawImage(ship1, shipX-50, shipY, 50, 50);
+			else if(count%4==1)
+				ctx.drawImage(ship2, shipX-50, shipY, 50, 50);
+			else if(count%4==2)
+				ctx.drawImage(ship3, shipX-50, shipY, 50, 50);
+			else if(count%4==3)
+				ctx.drawImage(ship4, shipX-50, shipY, 50, 50);
+
+			// 미사일 그리기
+			for(var i=0;i<missileArray.length;i++){
+				var m = missileArray[i];
+				ctx.drawImage(missileImg, m.X-25, m.Y-=20,5,20);
+				//console.log(missileArray);
+				// 화면 밖을 나가면 미사일을 제거하기 위한 코드.
+				if(m.Y <= -20) missileArray.splice(i,1);
+			}
+			// 적 비행기 그리기
+			for(var i=0;i<enemyArray.length;i++){
+				var e = enemyArray[i]
+				e.Y+=enemySpeed;
+				if(count%4==0)
+					ctx.drawImage(enemyShip1, e.X, e.Y, 50, 50);
+				else if(count%4==1)
+					ctx.drawImage(enemyShip2, e.X, e.Y, 50, 50);
+				else if(count%4==2)
+					ctx.drawImage(enemyShip3, e.X, e.Y, 50, 50);
+				else if(count%4==3)
+					ctx.drawImage(enemyShip4, e.X, e.Y, 50, 50);
+				// console.log(enemyArray);
+
+				if(e.Y>=650) enemyArray.splice(i,1);
+			}
+
+			// 게임 정보 출력
+			ctx.font = "30px 고딕";
+			ctx.fillStyle="red";
+			ctx.fillText("SCORE: " + score, 200, 50);
+
+			// 충돌 체크
+			checkCollision(); 
+			checkCollision2();
+			if(!gameFlag){
+				enemySpeed = 0;
+				canvas.onmousedown='';
+				canvas.onmousemove='';
+				enemyArray.splice(i,1);
+				ctx.font = "50px 고딕";
+				ctx.fillStyle="red";
+				ctx.fillText("GAME OVER", 50, 300);
+			}
+		} // drawScreen() end
+		function restart(){
+				enemySpeed = 5;
+				canvas.onmousedown=fireMissile;
+				canvas.onmousemove=moveShip;
+				gameFlag=true;
+				console.log("다시시작");
+				score = 0;
+				enemyArray = [];
+				missileArray = [];
+		}
+		function checkCollision(){
+			// 1. 미사일 배열에서 미사일 하나 꺼내기
+			for(var i=0;i<missileArray.length;i++){
+				var missile = missileArray[i];
+				// 2. 적 비행기 배열에서 적 비행기 하나 꺼내기
+				for(var j=0;j<enemyArray.length;j++){
+					var enemy =  enemyArray[j];
+					// 3. 둘 간의 거리를 측정
+					var dis = pythagoras(missile.X, missile.Y, enemy.X+50, enemy.Y+50);
+					// 4. 일정 거리 이하면 충돌.
+					if(dis<=10){
+						enemy.Y -= 5;
+						enemy.hp-= 50;
+						missile.Y -= 20;
+						// 5. 충돌이라면, 미사일과 적 비행기 배열에서 제거.
+						if(enemy.hp<=0){
+							enemyArray.splice(j,1);
+							missileArray.splice(i,1);
+							score+=50;
+							ex.currentTime = 0;
+							ex.play();
+						}
+					}
+				}
+			}
+		}
+		function checkCollision2(){
+			// 1. 적 비행기 배열에서 적 비행기 하나 꺼내기
+			for(var i=0;i<enemyArray.length;i++){
+				var enemy = enemyArray[i];
+				var dis = pythagoras(shipX, shipY, enemy.X+50, enemy.Y+50);
+
+
+				if(dis<=25){
+					gameFlag = false;
+				}
+			}
+			// 2. 내 비행기의 좌표 확인
+			// 3. 둘간의 거리 측정
+			// 4. 일정 거리 이하면 충돌
+			// 5. 충돌이면 적 비행기와 내 비행기 제거 후, 게임 오버 글자
+		}
+		function pythagoras(x1,y1,x2,y2){
+			// 두 점간의 거리를 반환할 함수
+			return Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+		}
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="600"></canvas>
+	<input type="button" value="Restart" id="re" onclick="restart();">
+</body>
+</html>

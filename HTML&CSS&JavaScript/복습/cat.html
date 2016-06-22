@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		canvas{background-color:#eeeeee;}
+	</style>
+	<script type="text/javascript">
+		var counter = 0;
+		var ctx;
+		var coins = [];
+		var jump = 0;
+		var relX = 0;
+		var bgImg = new Image();
+		var bgImg1 = new Image();
+		var coingold = new Image();
+		var coinsilver = new Image();
+
+		// 이미지 소스
+		bgImg.src = "../images/bg1.jpg";
+		bgImg1.src = "../images/bg2.jpg";
+
+		// coin
+		coingold.src = "../images/gold.png";
+		coinsilver.src = "../images/silver.png";
+		var rndX = 700;
+		var rndY = 200;
+
+		// 토끼 이미지 객체
+		var cat1 = new Image();
+		var cat2 = new Image();
+		var cat3 = new Image();
+
+		// 토끼 이미지 소스
+		cat1.src="../images/run1.png";
+		cat2.src="../images/run2.png";
+		cat3.src="../images/run3.png";
+		// 토끼 그림 좌표 x,y
+		var catX = 200;
+		var catY = 350;
+		var bgX1 = 0;
+		var bgY1 = 0;
+		var bgX2 = 800;
+		var bgY2 = 0;
+		var goldmv = 0;
+
+		// 윈도우차가 로딩된 후에 함수 호출
+		window.onload = function(){
+			var canvas = document.getElementById("myCanvas");
+			console.dir(canvas);
+			ctx = canvas.getContext("2d");
+
+
+			//document.body.onkeydown = 함수명;
+			document.body.onkeydown = moveRabbit;
+			
+
+			// ctx.drawImage(그릴 객체, x, y, 너비, 높이);
+			// 주기적으로 반복 실행
+			//window.setInterval(함수명, 시간)
+			window.setInterval(drawScreen,300);
+			//drawScreen();
+
+			
+
+		}
+		function drawScreen(){
+			counter++;
+			//console.log(counter);
+
+			bgX1-=5;
+			bgX2-=5;
+			goldmv -= 5;
+			if(bgX1<=-800)
+				bgX1 = 800;
+			if(bgX2<=-800)
+				bgX2 = 800;
+			if(jump<0)
+				jump += 40;
+
+			ctx.drawImage(bgImg,bgX1,0,800,600);
+			ctx.drawImage(bgImg1,bgX2,0,800,600);	
+
+			// coin 랜덤으로
+			setInterval(function(){	
+				relX +=5;
+				rndX = 800+relX;		
+				rndY = Math.floor(Math.random()*3)*100+200;
+				
+				var coin = {
+					"X": rndX,
+					"Y": rndY
+				};
+				coins.push(coin);
+			},5000);
+			for(var i=0;i<coins.length;i++){
+				ctx.drawImage(coingold, coins[i].X+goldmv, coins[i].Y, 50,50);
+			}
+			/*
+				var c = coins[i];
+				//c.X -= goldmv;
+				ctx.drawImage(coingold, c.X+goldmv, c.Y, 50,50);				
+			*/
+
+				
+
+			// 고양이 그리기
+			if(counter%3==0)
+				ctx.drawImage(cat1,catX,catY+jump,100,100);
+			else if(counter%3==1)
+				ctx.drawImage(cat2,catX,catY+jump,100,100);
+			else if(counter%3==2)
+				ctx.drawImage(cat3,catX,catY+jump,100,100);
+		}
+
+		function moveRabbit(e){
+			console.dir(e);
+			if(e.keyCode==39){
+				catX+=2;
+			} else if(e.keyCode==40){
+				catY+=10;
+			} else if(e.keyCode==32){
+				jump -= 120;				
+			}
+		}
+		function pause(numberMillis){
+			var now = new Date();
+			var exitTime = now.getTime() + numberMillis;
+			while (true) {
+			          now = new Date();
+			          if (now.getTime() > exitTime)
+			                     return;     
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="800" height="600"></canvas>
+	
+</body>
+</html>

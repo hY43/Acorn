@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+		}
+		canvas {
+			background-color: #eeeeee;
+			margin:0;
+		}
+	</style>
+	<script type="text/javascript">
+		var ctx;
+		var count = 0;
+		// 우주배경 이미지 객체
+		var bgImg1 = new Image();
+		var bgImg2 = new Image();
+		// 배경 이미지 소스
+		bgImg1.src = "../images/space.jpg";
+		bgImg2.src = "../images/space.jpg";
+		var bgY1 = 0;
+		var bgY2 = -600;
+		// 비행기 이미지 객체
+		var ship1 = new Image();
+		var ship2 = new Image();
+		var ship3 = new Image();
+		var ship4 = new Image();
+		// 소스
+		ship1.src = "../images/gunship4.png";
+		ship2.src = "../images/gunship5.png";
+		ship3.src = "../images/gunship6.png";
+		ship4.src = "../images/gunship7.png";
+		
+		// 비행기 좌표 변수
+		var shipX = 250;
+		var shipY = 500;
+
+		// 미사일 이미지 객체
+		var missileImg = new Image();
+		missileImg.src = "../images/missile1.png";
+
+		// 미사일의 y좌표 변수
+		var missileX = -100;
+		var missileY = 500;
+
+		var missileArray = [];
+
+		function moveShip(e){
+			shipX = e.x;
+			shipY = e.y;
+		}
+		function fireMissile(e){
+			var m = {
+				"X":shipX,
+				"Y":shipY
+			}
+			missileArray.push(m);
+		}
+		window.onload = function(){ // play game
+			var canvas = document.getElementById("myCanvas");
+			ctx = canvas.getContext("2d");
+
+			canvas.onmousemove = moveShip;
+
+			canvas.onmousedown = fireMissile;
+			setInterval(drawScreen,30);
+		}
+		function drawScreen(){
+			count++;							
+			bgY1+=2;
+			bgY2+=2;
+
+			// 미사일 이동
+			missileY -=5;
+
+			// ctx.drawImage(이미지객체, x, y, 너비, 높이);
+			ctx.drawImage(bgImg1, 0, bgY1, 400, 600);
+			ctx.drawImage(bgImg2, 0, bgY2, 400, 600);
+			if(bgY1>=600)
+				bgY1 = -600;
+			if(bgY2>=600)
+				bgY2 = -600;
+			// 비행기 그리기
+			if(count%4==0)
+				ctx.drawImage(ship1, shipX-25, shipY-25, 50, 50);
+			else if(count%4==1)
+				ctx.drawImage(ship2, shipX-25, shipY-25, 50, 50);
+			else if(count%4==2)
+				ctx.drawImage(ship3, shipX-25, shipY-25, 50, 50);
+			else if(count%4==3)
+				ctx.drawImage(ship4, shipX-25, shipY-25, 50, 50);
+
+			// 미사일 그리기
+			for(var i=0;i<missileArray.length;i++){
+				var m = missileArray[i];
+				ctx.drawImage(missileImg, m.X+23, m.Y-=30,5,20);
+				ctx.drawImage(missileImg, m.X-23, m.Y-=20,5,20);
+				console.log(missileArray);
+				// 화면 밖을 나가면 미사일을 제거하기 위한 코드.
+				if(m.Y <= -20) missileArray.shift();
+
+			}
+
+
+		}
+
+	</script>
+</head>
+<body>
+	<canvas id="myCanvas" width="400" height="600"></canvas>
+</body>
+</html>

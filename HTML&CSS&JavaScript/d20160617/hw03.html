@@ -16,7 +16,7 @@
 		var run2 = new Image();
 		var run3 = new Image();
 
-		bgImg.src = "../images/bg1.jpg";
+		bgImg.src = "../images/bg.jpg";
 		run1.src = "../images/run1.png";
 		run2.src = "../images/run2.png";
 		run3.src = "../images/run3.png";
@@ -35,9 +35,9 @@
 			counter++;
 			ctx.drawImage(bgImg,0,0,800,600);
 
-			if(counter%3==0) ctx.drawImage(run1,runX,runY,50,50);
-			else if(counter%2==0) ctx.drawImage(run2,runX,runY,50,50);
-			else ctx.drawImage(run3,runX,runY,50,50);
+			if(counter%3==0) ctx.drawImage(run1,runX,runY,100,100);
+			else if(counter%2==0) ctx.drawImage(run2,runX,runY,100,100);
+			else ctx.drawImage(run3,runX,runY,100,100);
 		}
 
 		function charMove(e){

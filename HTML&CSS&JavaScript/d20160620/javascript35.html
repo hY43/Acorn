@@ -9,16 +9,20 @@
 		}
 	</style>
 	<script type="text/javascript">
-
-		var ctx;
-		var counter=0;
+		var ctx; // 컨텍스트 변수 선언
+		var counter=0; // 비행기 그림을 교차시키기 위한 카운터 변수 선언
+		// 배경 객체 생성, 마치 비행기가 날아가는 것과 같은 효과를 주기 위해 배경 2개를 생성하여 이어붙임
 		var bgImg1 = new Image();
 		var bgImg2 = new Image();
+		// 비행기 객체 생성, 비행기 객체를 교차 출력해서 날아가는 것처럼 보이도록 함.
 		var shipImg1 = new Image();
 		var shipImg2 = new Image();
 		var shipImg3 = new Image();
 		var shipImg4 = new Image();
+		// 미사일 객체 생성
 		var missileImg = new Image();
+		var missile = [];
+		// 생성된 객체에 이미지를 붙임.
 		bgImg1.src = "../images/space.jpg";
 		bgImg2.src = "../images/space.jpg";
 		shipImg1.src = "../images/gunship4.png";
@@ -26,25 +30,26 @@
 		shipImg3.src = "../images/gunship6.png";
 		shipImg4.src = "../images/gunship7.png";
 		missileImg.src = "../images/missile1.png";
-
+		// 배경 화면의 처음 시작 좌표
 		var bgY1 = 0;
 		var bgY2 = 600;
+		// 비행기의 처음 시작 좌표
 		var shipX = 150;
 		var shipY = 500;
+		// 미사일의 좌표 변수 선언
 		var missileX;
 		var missileY;
+		// 
 		var missileFlag = true;
+		// 윈도우가 모두 로드된 후, 실행할 작엄을 onload를 통해 넣어둠.
 		window.onload=function(){
 			var canvas = document.getElementById("myCanvas");
 			ctx = canvas.getContext("2d");
-
 			document.body.onkeydown=moveShip;
 			console.log(canvas);
 			window.setInterval(drawScreen,100);
 		}
-
 		function drawScreen(){
-
 			if(bgY1>600){
 				bgY1 = -600;
 				bgY2 = 0;
@@ -54,35 +59,47 @@
 			}
 			bgY1+=2;
 			bgY2+=2;
-
 			ctx.drawImage(bgImg1, 0, bgY1, 400, 600);
 			ctx.drawImage(bgImg2, 0, bgY2, 400, 600);
 			counter++;
 			if(counter%4==0) ctx.drawImage(shipImg1, shipX, shipY, 50, 50);
 			else if(counter%4==1) ctx.drawImage(shipImg2, shipX, shipY, 50, 50);
 			else if(counter%4==2) ctx.drawImage(shipImg3, shipX, shipY, 50, 50);
-			else ctx.drawImage(shipImg4, shipX, shipY, 50, 50	);    
-			if(missileFlag==false){
-				missileY-=10;
-				ctx.drawImage(missileImg, missileX, missileY, 10, 10);
+			else ctx.drawImage(shipImg4, shipX, shipY, 50, 50	); 
+			for(var i=0;i<missile.length;i++){
+				if(missile[i].missileFlag==false){
+					missile[i].Y-=10;
+					ctx.drawImage(missileImg, missile[i].X, missile[i].Y, 10, 10);
+				}
+				if(missile[i].Y<0) missile[i].missileFlag=true;
 			}
-			if(missileY<0) missileFlag=true;
+			
+		}
+		function shotMissile(){
+			aMissile = {
+				"X":missileX,
+				"Y":missileY,
+				"missileFlag":missileFlag
+			};
+			missile.push(aMissile);
+			for(var i=0;i<missile.length;i++){
+				if(missile[i].missileFlag){
+					missile[i].X = shipX+20;
+					missile[i].Y = shipY-10;
+					ctx.drawImage(missileImg, missile[i].X, missile[i].Y, 10, 10);
+					missile[i].missileFlag = false;
+				}else{
+					missile[i].Y-=2;
+					ctx.drawImage(missileImg, missile[i].X, missileY, 10, 10);
+				}
+			}
 		}
 		function moveShip(e){
 			if(e.keyCode==37) shipX-=10;
 			else if(e.keyCode==39) shipX+=10;
-			else if(e.keyCode==32){
-				if(missileFlag){
-					missileX = shipX+20;
-					missileY = shipY-10;
-					ctx.drawImage(missileImg, missileX, missileY, 10, 10);
-					missileFlag = false;
-				}else{
-					missileY-=2;
-					ctx.drawImage(missileImg, missileX, missileY, 10, 10);
-				}
-			}
+			else if(e.keyCode==32) shotMissile();
 		}	
+	
 	</script>
 </head>
 <body>

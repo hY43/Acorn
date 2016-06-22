@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+	*{
+		margin: 0;
+	}
+		canvas { 
+			background-color: #eeeeee;
+		 }
+	}
