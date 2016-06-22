@@ -4,16 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<script type="text/javascript">
-		var num = prompt("수를 입력하세요");
+		var num = prompt("수를 입력하세요"); 
+		// 수를 입력하세요 라는 문자열을 보여주며 값을 입력 받는 MessageBox 생성, 입력 값을 받아서 num에 대입.
 		function sum(){
-			var sum = 0;
+			// 1~입력 받은 값까지의 합을 구하는 함수.
+			var sum = 0; // 누적 합을 계산하기 위한 변수 sum 선언 후, 0으로 초기화.
 			for(var i=1;i<=num;i++)
 			{
-				sum += i;
+				sum += i; // i의 값을 1부터 입력 받은 값까지 누적.
 			}
-			return sum;
+			return sum; // 누적 합을 반환.
 		}
 		document.write(num + " 까지의 누적합: " + sum() + "<br>");
+		// 누적 합을 브라우저에 형식에 맞게 출력.
 	</script>
 </head>
 <body>

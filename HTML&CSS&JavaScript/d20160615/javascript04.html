@@ -7,9 +7,10 @@
 		var cnt = 0; // 전역 변수.
 		function hahaha(){
 			// var cnt = 0; // 지역 변수.
-			cnt++; 
-			console.log(cnt);
-			return 0;
+			cnt++; // 전역 변수 cnt를 1씩 증가.
+			console.log(cnt); // 증가된 전역 변수 cnt 출력
+			return 0; // 0을 반환하며 함수 종료.
+			// 이 이후는 실행안됨.
 			console.log("호호호"); // Java처럼 에러를 띄우지는 않고 그냥 출력을 안한다.
 		}
 	</script>

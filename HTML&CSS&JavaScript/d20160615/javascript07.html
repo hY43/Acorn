@@ -5,11 +5,11 @@
 	<title>Document</title>
 	<script type="text/javascript">
 		function prt(){
-			var obj = document.getElementById("txt1");
-			console.dir(obj);
-			console.log(obj.id);
-			console.log(obj.value);
-			obj.value="바보바보바보야";
+			var obj = document.getElementById("txt1"); // id가 txt1인 객체를 불러와, 변수 obj에 대입.
+			console.dir(obj); // 객체 obj의 구조 출력
+			console.log(obj.id); // 객체 obj의 id를 출력한다.
+			console.log(obj.value); // 객체 obj의 value를 출력.
+			obj.value="바보바보바보야"; // 객체 obj의 value에 문자열 입력.
 		}
 	</script>
 </head>
@@ -18,5 +18,6 @@
 	<input type="text" placeholder="이름을 쓰세요" name="" id="txt1">
 	<!-- <input type="password" placeholder="********" name="" id="pwd"> -->
 	<input type="button" value="출력" id="btn" onclick="prt();">
+	<!-- 버튼을 클릭하면 prt 함수를 실행한다. -->
 </body>
 </html>
