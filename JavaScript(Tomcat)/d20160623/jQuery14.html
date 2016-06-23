@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// var $div: 이 div 변수는 JQuery 객체입니다.
+		var $div = $("div");
+		$("#btn1").on("click",function(){
+			$div.slideDown(1000); // id가 btn1인 Tag를 슬라이드 방식으로 나오게 한다.
+		});
+		$("#btn2").on("click",function(){
+			$div.slideUp(1000); // id가 btn2인 Tag를 슬라이드 방식으로 사라지게 한다..
+		});
+		$("#btn3").on("click",function(){
+			$div.slideToggle(1000); // id가 btn3인 Tag에 slideDown과 slideDown을 번갈아가며 실행한다.
+		});
+		$("#btn4").on("click",function(){
+			$div.slideToggle(1000, function(){
+				alert("작업이 끝난 후에 경고 창 띄우기"); // slideToggle이 실행완료 되면 alert 함수를 띄우는 익명함수를 실행한다.
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="button" value="슬라이드 다운" id="btn1" />
+	<input type="button" value="슬라이드업" id="btn2" />
+	<input type="button" value="슬라이드토글" id="btn3" />
+	<input type="button" value="토글 alert" id="btn4" />
+	<div>
+	<img src="../images/test.png" alt="한효주" />
+	</div>
+	
+</body>
+</html>

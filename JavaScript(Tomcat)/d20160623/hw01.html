@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	div{
+		margin:auto;
+		text-align: center;
+	}
+	img{
+		width:200px;
+		height:200px;
+	}
+</style>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	var price = 50000;
+	$(function(){
+		$("input").on("click", function(){
+			// price = $("h3").text();
+			$("h3").text(price*0.9);
+		});
+	});
+</script>
+</head>
+<body>
+	<div><img src="../images/rabbit1.png" alt="토끼" /></div>
+	<div><h2>토끼 인형</h2></div>
+	<div><h3>50000</h3></div>
+	<div><input type="button" value="할인해줘" id="btn" /></div>
+</body>
+</html>

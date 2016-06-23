@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	/* $(document).read(익명함수); */
+	// 위의 방식을 지금은 아래와 같이 작성한다.
+	$(function(){
+		$("input:button").on("click", function(){
+			// 버튼을 클릭하면 실행될 무명 함수.
+			 // $("#txt2")[0].value = $("#txt1")[0].value;
+			 // console.dir($("#text"));
+			 $("#txt2").val($("#txt1").val()); 
+			 // txt1을 id로 갖는 Tag의 value 속성 값을 가져와서 txt2를 id로 갖는 Tag의 value 속성 값에 넣는다.
+		});
+	});
+</script>
+</head>
+<body>
+	<input type="text" name="txt1" id="txt1" />
+	<input type="button" value="아래로 복사" />
+	<br />
+	<hr color="blue"/>
+	<input type="text" name="txt2" id="txt2" />
+</body>
+</html>

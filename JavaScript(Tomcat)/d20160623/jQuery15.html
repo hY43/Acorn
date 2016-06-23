@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#btn1").on("click", function(){
+			// p Tag에 대해 "텍스트"만 가져온다.
+			// text와 html 함수는 괄호안에 인자를 넣으면 값을 넣고, 아무런 인자를 넣지 않으면 현재 들어있는 값을 리턴한다.
+			console.log($("p").text());
+			// p Tag에 대해 "HTML" 전체를 가져온다.(Tag 역시 가져옴.)
+			console.log($("p").html());
+		});
+		$("#btn2").on("click", function(){
+			console.log("hello");
+		});
+	});
+</script>
+</head>
+<body>
+	<p>오늘은 <b>목요일</b>입니다.</p>
+	<input type="text" name="" id="txt1" />
+	<input type="button" value="글자출력" id="btn1" />
+	<input type="button" value="엘리먼트출력" id="btn2" />
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	/* img Tag의 너비 300px, 높이 300px로 지정. */
+	img{
+		width:300px;
+		height:300px;
+	}
+</style>
+<script type="text/javascript" src = "http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+	var count=0; // id가 btn3인 Tag의 익명 함수에 토글 효과를 주기 위한 변수 count 선언 후, 0으로 초기화.
+	$(function(){
+		$("#btn1").on("click",function(){
+			var data = $("#txt1").val();
+			// $("ol").prepend("<li>"+data+"</li"); // 현재 ol Tag내 목록의 첫 번째 항목으로 추가한다.
+			$("ol").append("<li>"+data+"</li"); // 현재 ol Tag내 목록의 마지막 항목으로 추가한다.
+		});
+		$("#btn2").on("click",function(){
+			// var link = $("a").attr("href"); // 속성중 href를 가져와서 변수 link에 대입.
+			$("a").attr("href", "http://www.naver.com"); // a Tag의 속성중 href 속성에 해당하는 값을 http://www.naver.com으로 변경.
+			$("a").text("네이버"); 
+		});
+		$("#btn3").on("click",function(){
+			count++; // 토글 효과를 주기 위한 변수 count
+			// 조건문을 통해 각 속성값 변경을 번갈아 진행한다.
+			if(count%2==0) $("img").attr("src", "../images/movie1.jpg"); // img Tag 내 속성 중 src 속성의 값을 ../images/movie1.jpg로 변경
+			else if(count%2==1) $("img").attr("src", "../images/test.png"); // img Tag 내 속성 중 src 속성의 값을 ../images/test.png로 변경
+		});
+	});
+</script>
+</head>
+<body>
+	<h2>실시간 영화 예매 순위</h2>
+	<ol>
+		<li>정글북</li>
+		<li>특별수사</li>
+		<li>컨저링2</li>
+		<li>아가씨</li>
+		<li>워크래프트</li>
+	</ol>
+	<a href="http://www.daum.net">다음</a>
+	<img src="../images/test.png" alt="한효주" />
+	<input type="text" name="" id="txt1" />
+	<input type="button" value="추가" id="btn1" />
+	<input type="button" value="속성바꾸기" id="btn2" />
+	<input type="button" value="사진바꾸기" id="btn3" />
+</body>
+</html>
