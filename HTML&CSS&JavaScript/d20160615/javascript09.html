@@ -5,12 +5,13 @@
 	<title>Document</title>
 	<script type="text/javascript">
 	function cal(){
-		var txt1 = document.getElementById("txt1");
-		var oper = document.getElementById("oper");
-		var txt3 = document.getElementById("txt3");
-		var txt4 = document.getElementById("txt4");
+		var txt1 = document.getElementById("txt1"); // id가 txt1인 객체를 불러와서 변수 txt1에 대입.
+		var oper = document.getElementById("oper"); // id가 oper인 객체를 불러와서 변수 oper에 대입.
+		var txt3 = document.getElementById("txt3"); // id가 txt3인 객체를 불러와서 변수 txt3에 대입.
+		var txt4 = document.getElementById("txt4"); // id가 txt4인 객체를 불러와서 변수 txt4에 대입.
 
 		// txt4.value = parseInt(txt1.value+txt2.value+txt3.value);
+		// txt1, oper, txt3의 value를 문자열로 이어 붙인 후, eval 함수를 이용하여 실제 연산을 진행. 그리고 그 결과를 txt4의 value에 입력한다.
 		txt4.value = eval(txt1.value+oper.value+txt3.value);
 	}
 	</script>
@@ -20,6 +21,8 @@
 	<input type="text" id="oper" size="2px"></input:>
 	<input type="text" id="txt3"></input:>
 	<input type="button" value="=" id="btn" onclick="cal();">
+	<!-- 버튼을 클릭하면 cal 함수를 실행 -->
 	<input type="text" id="txt4"></input:>
+	<!-- 연산의 결과를 출력할 text Tag인 txt4 생성 -->
 </body>
 </html>

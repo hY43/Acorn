@@ -6,13 +6,14 @@
 	<script type="text/javascript">
 		function prt(){
 			// console.log("txt1: " + document.getElementById("txt1").value + ", txt2: " + document.getElementById("txt2").value);
-			var txt1 = document.getElementById("txt1");
-			var txt2 = document.getElementById("txt2");
-			console.log(txt1.value);
-			console.log(txt2.value);
-			var txt3 = document.getElementById("txt3");
+			var txt1 = document.getElementById("txt1"); // id가 txt1인 객체를 불러와서 변수 txt1에 대입.
+			var txt2 = document.getElementById("txt2"); // id가 txt2인 객체를 불러와서 변수 txt2에 대입.
+			console.log(txt1.value); // 객체 txt1의 항목 value를 콘솔창에 출력.
+			console.log(txt2.value); // 객체 txt2의 항목 value를 콘솔창에 출력.
+			var txt3 = document.getElementById("txt3"); // id가 txt3인 객체를 불러와서 변수 txt3에 대입.
 			// txt3.value = eval(txt1.value)+eval(txt2.value);
-			txt3.value = parseInt(txt1.value) + parseInt(txt2.value);
+			txt3.value = parseInt(txt1.value) + parseInt(txt2.value); 
+			// txt1과 txt2의 각 value를 parseInt 함수를 사용하여 정수로 변환 하여 합 연산을 진행한 후, 결과를 txt 객체의 value에 입력한다.
 		}
 	</script>
 </head>
@@ -21,6 +22,7 @@
 	+
 	<input type="text" name="" id="txt2">
 	<input type="button" value="btn" onclick="prt();">
+	<!-- value가 btn인 button Tag를 클릭하면 prt 함수를 실행한다. -->
 	<input type="text" name="" id="txt3">
 	<!-- 버튼을 클릭하면 txt1의 값과 txt2의 값을 콘솔에 출력하시오 -->
 </body>
