@@ -7,13 +7,13 @@ public class EmpVO {
 	private String job;
 	private int mgr;
 	private int hiredate;
-	private float sal;
-	private float comm;
+	private int sal;
+	private int comm;
 	private int deptno;
 	
 	/* Constructor */
 	public EmpVO(){}
-	public EmpVO(int empno, String ename, String job, int mgr, int hiredate, float sal, float comm, int deptno) {
+	public EmpVO(int empno, String ename, String job, int mgr, int hiredate, int sal, int comm, int deptno) {
 		super();
 		this.empno = empno;
 		this.ename = ename;
@@ -25,7 +25,7 @@ public class EmpVO {
 		this.deptno = deptno;
 	}
 		
-	public EmpVO(int empno, String ename, String job, float sal, int deptno) {
+	public EmpVO(int empno, String ename, String job, int sal, int deptno) {
 		super();
 		this.empno = empno;
 		this.ename = ename;
@@ -46,10 +46,10 @@ public class EmpVO {
 	public void setMgr(int mgr){this.mgr = mgr;}
 	public int getHiredate(){return hiredate;}
 	public void setHiredate(int hiredate){this.hiredate = hiredate;}
-	public float getSal(){return sal;}
-	public void setSal(float sal){this.sal = sal;}
-	public float getComm(){return comm;}
-	public void setComm(float comm){this.comm = comm;}
+	public int getSal(){return sal;}
+	public void setSal(int sal){this.sal = sal;}
+	public int getComm(){return comm;}
+	public void setComm(int comm){this.comm = comm;}
 	public int getDeptno(){return deptno;}
 	public void setDeptno(int deptno){this.deptno = deptno;}	
 }

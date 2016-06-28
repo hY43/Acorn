@@ -11,7 +11,7 @@ import vo.EmpVO;
 
 public class EmpDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@192.168.0.72:1521:orcl";
+	private String url = "jdbc:oracle:thin:@172.30.1.2:1521:orcl";
 	private String user = "scott";
 	private String password = "tiger";
 	private Connection conn;
@@ -45,7 +45,7 @@ public class EmpDAO {
 			while(rs.next()){
 				int empno = rs.getInt("empno");
 				String ename = rs.getString("ename");
-				float sal = rs.getFloat("sal");
+				int sal = rs.getInt("sal");
 				String job = rs.getString("job");
 				int deptno = rs.getInt("deptno");
 				vo = new EmpVO(empno, ename, job, sal, deptno);
@@ -71,7 +71,7 @@ public class EmpDAO {
 			
 			rs.next();
 			String ename = rs.getString("ename");
-			float sal = rs.getFloat("sal");
+			int sal = rs.getInt("sal");
 			String job = rs.getString("job");
 			int deptno = rs.getInt("deptno");
 			
@@ -84,19 +84,35 @@ public class EmpDAO {
 	}
 	public void insertOne(EmpVO vo){
 		sb.setLength(0);
-		sb.append("INSERT INTO EMP(empno, ename, job, deptno) ");
-		sb.append("VALUES(EMP_SEQ_EMPNO.NEXTVAL,?,?,?)");
+		sb.append("INSERT INTO EMP(empno, ename, sal, job, deptno) ");
+		sb.append("VALUES(EMP_SEQ_EMPNO.NEXTVAL,?,?,?,?)");
 		
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
 			pstmt.setString(1, vo.getEname());
-			pstmt.setString(2, vo.getJob());
-			pstmt.setInt(3, vo.getDeptno());
+			pstmt.setInt(2, vo.getSal());
+			pstmt.setString(3, vo.getJob());
+			pstmt.setInt(4, vo.getDeptno());
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void deleteOne(int no){
+		sb.setLength(0);
+		sb.append("DELETE FROM EMP ");
+		sb.append("WHERE empno = ?");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 }

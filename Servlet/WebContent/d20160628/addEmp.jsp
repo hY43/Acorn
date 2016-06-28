@@ -40,6 +40,10 @@
 				<td><input type="text" name="job" id="" /></td>
 			</tr>
 			<tr>
+				<th>연봉</th>
+				<td><input type="text" name="sal" id="" /></td>
+			</tr>
+			<tr>
 				<th>부서번호</th>
 				<td><input type="text" name="deptno" id="" /></td>
 			</tr>
@@ -55,6 +59,7 @@
 			EmpDAO dao = new EmpDAO();
 			EmpVO vo = new EmpVO();
 			vo.setEname(name);
+			vo.setSal(Integer.parseInt(sal));
 			vo.setJob(job);
 			vo.setDeptno(Integer.parseInt(deptno));
 			dao.insertOne(vo);
