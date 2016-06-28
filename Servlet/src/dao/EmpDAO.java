@@ -58,4 +58,45 @@ public class EmpDAO {
 		}
 		return list;
 	}
+	
+	public EmpVO selectOne(int no){
+		EmpVO vo = null;
+		sb.setLength(0);
+		sb.append("SELECT empno, ename, sal, job, deptno FROM emp ");
+		sb.append("WHERE empno = ?");
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			rs.next();
+			String ename = rs.getString("ename");
+			float sal = rs.getFloat("sal");
+			String job = rs.getString("job");
+			int deptno = rs.getInt("deptno");
+			
+			vo = new EmpVO(no, ename, job, sal, deptno);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vo;
+	}
+	public void insertOne(EmpVO vo){
+		sb.setLength(0);
+		sb.append("INSERT INTO EMP(empno, ename, job, deptno) ");
+		sb.append("VALUES(EMP_SEQ_EMPNO.NEXTVAL,?,?,?)");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, vo.getEname());
+			pstmt.setString(2, vo.getJob());
+			pstmt.setInt(3, vo.getDeptno());
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

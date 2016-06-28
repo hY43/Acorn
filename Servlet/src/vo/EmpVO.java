@@ -12,6 +12,7 @@ public class EmpVO {
 	private int deptno;
 	
 	/* Constructor */
+	public EmpVO(){}
 	public EmpVO(int empno, String ename, String job, int mgr, int hiredate, float sal, float comm, int deptno) {
 		super();
 		this.empno = empno;

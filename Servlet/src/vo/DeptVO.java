@@ -9,6 +9,7 @@ public class DeptVO {
 	private String loc;
 	
 	/* Constructor */
+	public DeptVO(){}
 	public DeptVO(int deptno, String dname, String loc) {
 		super();
 		this.deptno = deptno;
