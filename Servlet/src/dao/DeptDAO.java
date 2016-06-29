@@ -12,7 +12,7 @@ import vo.DeptVO;
 public class DeptDAO {
 	// 환경 변수를 private한 멤버 변수로 생성
 	private String driver = "oracle.jdbc.driver.OracleDriver"; // 드라이버 로딩을 위한 드라이버 값 입력(oracle.jdbc.driver Package 내에 있는 OracleDriver Class 사용)
-	private String url = "jdbc:oracle:thin:@172.30.1.2:1521:orcl"; // 접속을 위한 url 정보 입력, Oracle Server의 IP와 DB Name(orcl) 필요
+	private String url = "jdbc:oracle:thin:@192.168.0.72:1521:orcl"; // 접속을 위한 url 정보 입력, Oracle Server의 IP와 DB Name(orcl) 필요
 	private String user = "scott"; // Oracle의 사용자 ID
 	private String password = "tiger"; // Oracle의 사용자 ID에 대한 비밀번호
 	private Connection conn; // Connection 객체 생성을 위한 참조 변수 선언.

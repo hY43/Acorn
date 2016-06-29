@@ -1,0 +1,48 @@
+@CHARSET "UTF-8";
+* {
+	/* 초기화 */
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	width: 1000px;
+	margin: auto;
+}
+
+#nav {
+	background-color: #23b300;
+	
+	padding-left: 100px;
+	margin: 0 30px;
+}
+
+a {
+	margin: 30px;
+	font-weight: bold;
+	color:white;
+}
+
+#leftContents {
+	width: 70%;
+	float: left;
+}
+
+#sideBar {
+	width: 30%;
+	float: right;
+}
+
+#loginForm {
+	padding: 10px;
+	width: 100%;
+	text-align: center;
+}
+
+ol, ul {
+	list-style-type: none;
+}
+
+#footer {
+	clear: both;
+}
