@@ -47,9 +47,7 @@ img{
 <script type="text/javascript">
 	$(function(){
 		$("img[src='../images/cry.png']").on("click",function(){
-			$("form")
-			
-			
+			$("form").submit();
 		});
 	});
 </script>
@@ -65,6 +63,7 @@ img{
 		<tr>
 			<th id="col1">작성일시</th>
 			<td id="col2"><%=vo.getRegDate() %></td>
+			<input type="hidden" name="bno" value="<%=vo.getbNo()%>"/>
 			<th id="col3">조회수</th>
 			<td id="col4"><%=vo.getHits() %></td>
 		</tr>
