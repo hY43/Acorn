@@ -54,7 +54,6 @@
 			<td><%=vo.getWriter() %></td>
 			<td><%=vo.getRegDate() %></td>
 		</tr>
-
 	<%
 		}	
 	%>

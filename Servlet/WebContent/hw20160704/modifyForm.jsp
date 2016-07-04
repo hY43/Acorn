@@ -49,8 +49,9 @@ th, td {
 		
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" name="writer" id="" value=<%=vo.getWriter() %>/>
-						<input type="hidden" name="gno" value=<%=vo.getGno() %> />
+			<td>
+			<input type="text" name="writer" id="" value=<%=vo.getWriter() %>/>
+			<input type="hidden" name="gno" value=<%=vo.getGno() %> />
 			</td>
 
 			<th>작성일자</th>

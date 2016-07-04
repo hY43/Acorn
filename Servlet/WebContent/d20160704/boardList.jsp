@@ -56,22 +56,25 @@
 		out.println("endNo: " + endNo + "<br>"); */
 		BoardDAO dao = new BoardDAO(); // selectAll Method 실행을 위한 BoardDAO 객체 생성.
 		ArrayList<BoardVO> list = dao.selectAll(startNo,endNo); // select 문의 모든 결과를 row 단위로 저장하기 위한 BoardVO Type ArrayList 생성.
-		int cnt = dao.getTotalCount();
-		int totalPage = (cnt%10==0) ? (cnt/10) : (cnt/10+1);
-		int startPage = pageNo-4;
-		int endPage = pageNo+5;
+		int cnt = dao.getTotalCount(); // 전체 데이터 수를 얻어와 int type 변수 cnt에 저장.
+		int totalPage = (cnt%10==0) ? (cnt/10) : (cnt/10+1); // 한 페이지에 10개 항목을 보이게 하기 위해, 전체 데이터 수를 10으로 나눔.
+		int startPage = pageNo-4; // 시작 페이지 설정(현재 페이지로 부터 이전 4개의 페이지는 선택할 수 있게 하기 위해 현재 페이지 번호(pageNo)에서 4를 뺌.)
+		int endPage = pageNo+5; // 끝 페이지 설정(현재 페이지로 부터 다음 5개의 페이지는 선택할 수 있게 하기 위해 현재 페이지 번호(pageNo)에 5를 더함.)
 		
 		if(startPage <= 0){
+			// 현재 페이지에서 -4를 했을때 시작 페이지가 음수 값이 나오는 경우에 대비하여 0보다 작을 경우 페이지 번호를 1부터 시작하도록 설정
 			startPage = 1;	
 			if(endPage < 10)
+				// 맨 처음 시작할때 1페이지부터 10 페이지까지 선택할 수 있도록 하기 위해 끝 페이지를 10 이하일때는 무조건 10이 되도록 설정.
 				endPage = 10;
 		}else if(endPage >= totalPage){
+			// 끝 페이지가 전체 페이지 수보다 많다면 그 이상의 페이지는 보여줄 필요가 없기 때문에 무조건 마지막 페이지를 전체 페이지 수로 설정.
 			endPage = totalPage;
 		}
 		
-		boolean beforeFlag = false;
-		boolean afterFlag = false;
-		if(pageNo-5 >= 0) beforeFlag = true;
+		boolean beforeFlag = false; // 이전 페이지가 있는지 확인하기 위한 Flag
+		boolean afterFlag = false; // 이후 페이지가 있는지 확인하기 위한 Flag
+		if(pageNo-5 >= 0) beforeFlag = true; // 현재 페이지보다 이전에 5 이상의 페이지가 존재하는지 확인하고 
 		if(pageNo+5 <= totalPage) afterFlag = true;
 /* 		out.println("totalPage: " + totalPage + "<br>");			
 		out.println("startPage: " + startPage + "<br>");			
