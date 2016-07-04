@@ -1,0 +1,6 @@
+﻿2016.06.27
+login.jsp: 로그인 화면 구성
+1) 로그인 클릭: 문자로 직접 aaa,bbb 입력
+-> loginOk.jsp
+
+requestEx.jsp: _jspService: 객체 확인 실습
