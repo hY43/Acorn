@@ -11,7 +11,7 @@ import vo.GuestBookVO;
 
 public class GuestBookDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@192.168.0.72:1521:orcl";
+	private String url = "jdbc:oracle:thin:@172.30.1.12:1521:orcl";
 	private String user = "scott";
 	private String password = "tiger";
 	private Connection conn;
@@ -35,16 +35,22 @@ public class GuestBookDAO {
 		}
 	}
 	
-	public ArrayList<GuestBookVO> selectAll(){
+	public ArrayList<GuestBookVO> selectAll(int startNo, int endNo){
 		ArrayList<GuestBookVO> list = new ArrayList<GuestBookVO>();
 		GuestBookVO vo = null;
 		
 		sb.setLength(0);
-		sb.append("SELECT gno, writer, contents, to_char(regdate,'YYYY-MM-DD') regdate ");
-		sb.append("FROM guestbook");
 		
+		sb.append("SELECT gno, writer, contents, to_char(regdate,'YYYY-MM-DD') regdate ");
+		sb.append("FROM (SELECT rownum r, gno, writer, contents, regdate ");
+		sb.append("FROM (SELECT gno, writer, contents, regdate FROM guestbook ORDER BY gno DESC) ");
+		sb.append("WHERE rownum <= ?) ");
+		sb.append("WHERE r >= ?");
+	
 		try {
 			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, endNo);
+			pstmt.setInt(2, startNo);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				int gno = rs.getInt("gno");
@@ -135,5 +141,21 @@ public class GuestBookDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public int getTotalCnt(){
+		sb.setLength(0);
+		sb.append("SELECT count(*) cnt FROM guestBook");
+		int totalCnt = 0;
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			rs = pstmt.executeQuery();
+			rs.next();
+			totalCnt = rs.getInt("cnt");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return totalCnt;
 	}
 }
