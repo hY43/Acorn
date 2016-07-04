@@ -32,7 +32,7 @@ table {
 			int bno = Integer.parseInt(request.getParameter("bno")); // bno를 name으로 갖는 값을 불러와서 int 형으로 변환하고 bno 변수에 저장.
 			BoardDAO dao = new BoardDAO(); // selectOne Method 사용을 위해 BoardDAO 객체 생성
 			BoardVO vo = dao.selectOne(bno); // selectOne Method를 호출하고 그 반환값을 BoardVO 객체에 생성.
-			dao.raiseHits(bno);
+			dao.raiseHits(bno); // 조회 수 증가.
 		%>
 
 		<tr>

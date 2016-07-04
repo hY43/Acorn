@@ -74,8 +74,8 @@
 		
 		boolean beforeFlag = false; // 이전 페이지가 있는지 확인하기 위한 Flag
 		boolean afterFlag = false; // 이후 페이지가 있는지 확인하기 위한 Flag
-		if(pageNo-5 >= 0) beforeFlag = true; // 현재 페이지보다 이전에 5 이상의 페이지가 존재하는지 확인하고 
-		if(pageNo+5 <= totalPage) afterFlag = true;
+		if(pageNo-5 >= 0) beforeFlag = true; // 현재 페이지보다 이전에 5 이상의 페이지가 존재하는지 확인하고 존재하는 경우에만 true로 바꿔 5개의 페이지 항목을 보여준다.
+		if(pageNo+5 <= totalPage) afterFlag = true; // 현재 페이지 이후 5 이상의 페이지가 존재하는지 확인하고 존재하는 경우에만 true로 바꿔 5개의 페이지 항목을 보여준다.
 /* 		out.println("totalPage: " + totalPage + "<br>");			
 		out.println("startPage: " + startPage + "<br>");			
 		out.println("endPage: " + endPage + "<br>");	 */		
@@ -94,6 +94,7 @@
 	%>
 	<tr>
 		<td colspan=5>
+		<!-- 5페이지를 보여줄 수 있을 때에만 이전 버튼을 활성화 시킨다. -->
 		<%if(beforeFlag){ %>
 		<a href="boardList.jsp?page=<%=(pageNo-5) %>"><input type="button" value="[이전]" /></a>
 		<%
@@ -103,13 +104,13 @@
 			for(int i=startPage;i<endPage;i++)
 			{
 		%>
+			<!-- 한 페이지에 10개 게시물을 보여주기 위한 반복문 -->
 			<a href="boardList.jsp?page=<%=i %>">[<%=i %>]</a>
 		<%
 			}
 		%>
-		<%
-			if(afterFlag){
-		%>
+		<!-- 5페이지를 보여줄 수 있을 때에만 다음 버튼을 활성화 시킨다. -->
+		<%if(afterFlag){%>
 		<a href="boardList.jsp?page=<%=(pageNo+5) %>"><input type="button" value="[다음]" /></a>
 		<%
 			} 

@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<td colspan=4>
-				// Smart Editor의 submitContents Method를 사용하여 submit.
+				<!-- Smart Editor의 submitContents Method를 사용하여 submit. -->
 				<input type="button" value="글쓰기" onclick="submitContents(this)"/> 
 				<a href="boardList.jsp"><input type="button" value="돌아가기" /></a></td>
 			</tr>

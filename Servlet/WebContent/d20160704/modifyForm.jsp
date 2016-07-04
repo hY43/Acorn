@@ -39,7 +39,6 @@ table {
 	<form action="modifyOk.jsp">
 		<table>
 			<%
-				// 
 				int bno = Integer.parseInt(request.getParameter("bno"));
 				BoardDAO dao = new BoardDAO();
 				BoardVO vo = dao.selectOne(bno);
@@ -58,17 +57,21 @@ table {
 			</tr>
 			<tr>
 				<td>내용</td>
+				<!-- smart editor의 ir1을 사용하여 UI 생성 -->
 				<td colspan=4><textarea name="ir1" id="ir1" cols="100" rows="20" style="width: 766px; height: 410px; display: none;"><%=vo.getContents()%>
 				</textarea></td>
 			</tr>
 			<tr>
 				<td colspan=4>
+					<!-- smart editor의 submitContent Method를 사용하여 데이터 전달 -->
 					<input type="button" value="글쓰기" onclick="submitContents(this)"/>
+					<!-- 돌아가기 버튼을 누르면 boardList.jsp로 이동 -->
 					<a href="boardList.jsp"><input type="button" value="돌아가기" /></a></td>
 				</td>
 			</tr>
 		</table>
 	</form>
+	<!-- smart editor 사용을 위한 javascript --> 
 	<script type="text/javascript">
 		var oEditors = [];
 
