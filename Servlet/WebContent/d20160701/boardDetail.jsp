@@ -1,5 +1,6 @@
-<%@page import="practice.BoardVO"%>
-<%@page import="practice.BoardDAO"%>
+
+<%@page import="vo.BoardVO"%>
+<%@page import="dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -50,6 +51,9 @@ table {
 			<tr>
 				<td colspan=4>
 				<a href="modifyForm.jsp?bno=<%=vo.getBno()%>"><img src="../images/cry.png" alt="modify" /></a>
+				<a href="deleteOk.jsp?bno=<%=vo.getBno() %>">
+					<img src="../images/jiwoogae.png" alt="del" />
+				</a>
 				<a href="boardList.jsp"><img src="../images/docu.png" alt="docList" /></a>
 				</td>
 			</tr>

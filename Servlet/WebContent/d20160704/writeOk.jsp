@@ -6,10 +6,9 @@
 <%
 	BoardDAO dao = new BoardDAO();
 	BoardVO vo = new BoardVO();
-	vo.setBno(Integer.parseInt(request.getParameter("bno")));
 	vo.setTitle(request.getParameter("title"));
 	vo.setWriter(request.getParameter("writer"));
-	vo.setContents(request.getParameter("contents"));
-	dao.updateOne(vo);
-	response.sendRedirect("boardList.jsp");
+	vo.setContents(request.getParameter("ir1"));
+	dao.insertOne(vo);
+ 	response.sendRedirect("boardList.jsp");
 %>

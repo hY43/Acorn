@@ -1,6 +1,7 @@
-<%@page import="practice.BoardVO"%>
+
+<%@page import="vo.BoardVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="practice.BoardDAO"%>
+<%@page import="dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
