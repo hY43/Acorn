@@ -11,7 +11,7 @@ import vo.GuestBookVO;
 
 public class GuestBookDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@172.30.1.12:1521:orcl";
+	private String url = "jdbc:oracle:thin:@192.168.0.72:1521:orcl";
 	private String user = "scott";
 	private String password = "tiger";
 	private Connection conn;
