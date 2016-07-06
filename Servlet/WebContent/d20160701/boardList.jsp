@@ -40,9 +40,9 @@
 		<th>작성일시</th>
 		<th>조회수</th>
 	</tr>
-	<%
+<%-- 	<%
 		BoardDAO dao = new BoardDAO();
-		ArrayList<BoardVO> list = dao.selectAll();
+		ArrayList<BoardVO> list = dao.selectAll(startNo, endNo);
 		for(BoardVO vo : list){
 	%>
 	<tr>
@@ -54,7 +54,7 @@
 	</tr>
 	<%
 		}
-	%>
+	%> --%>
 	<tr>
 		<td colspan=5>
 		<a href="writeForm.jsp">
