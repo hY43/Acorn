@@ -10,7 +10,7 @@ import vo.MemberVO;
 
 public class MemberDAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@192.168.0.72:1521:orcl";
+	private String url = "jdbc:oracle:thin:@192.168.0.42:1521:orcl";
 	private String user = "scott";
 	private String password = "tiger";
 	private Connection conn;
@@ -80,5 +80,22 @@ public class MemberDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean isExist(String id){
+		sb.setLength(0);
+		sb.append("SELECT * FROM member ");
+		sb.append("WHERE id = ?");
+		boolean flag = false;
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			flag = rs.next();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+		return flag;
 	}
 }
