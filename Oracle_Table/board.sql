@@ -9,6 +9,12 @@
 	status	number(10)
 );
 
+create sequence board_bno_seq
+start with 1
+increment by 1
+nocache
+nocycle;
+
 insert into board
 values( board_bno_seq.nextval, '푸하하', 'sangwon', '안뇽안뇽', 0, sysdate, 1);
 insert into board
@@ -31,12 +37,6 @@ values( board_bno_seq.nextval, '게시글9', 'sangwon', '안뇽안뇽9', 0, sysd
 
 alter table board
 add constraint board_bno_pk	primary key(bno);
-
-create sequence board_bno_seq
-start with 1
-increment by 1
-nocache
-nocycle;
 
 commit;
 
