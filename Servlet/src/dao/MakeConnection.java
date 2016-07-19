@@ -10,7 +10,7 @@ public class MakeConnection {
 	// -> 무겁거나 한개이상의 객체가 필요 없을때
 	private static MakeConnection mc = new MakeConnection(); // class 가 로딩되기 전에 단 한번만 객체를 생성하며 그 이후에는 생성자가 private이므로 생성할 수 없다.
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@192.168.0.72:1521:orcl";
+	private String url = "jdbc:oracle:thin:@192.168.0.42:1521:orcl";
 	private String user = "scott";
 	private String password = "tiger";
 	private Connection conn;
