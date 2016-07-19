@@ -31,13 +31,15 @@
 			console.log(m)
 			var result = document.getElementById("result");
 			result.value += m;
+			// 입력 받은 숫자를 문자열로 계속 더해줌.
 		}
 		function cal(){
 			var result = document.getElementById("result");
-			result.value = eval(result.value);
+			result.value = eval(result.value); // eval 내장 함수를 이용하여 문자열로 이루어진 연산을 실제 계산한 후, result라는 id를 갖는 text에 넣는다.
 		}
 		function clearScreen(){
 			document.getElementById("result").value="";
+			// 초기화.
 		}
 	</script>
 </head>
