@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 주석 입니다. -->
+<student> <!-- 최상위: root Element -->
+	<!-- xml 속성: 요소 내에 정보나 데이터를 표현하기 위한 방법 -->
+	<student sid='200'>
+		<!-- 시작 태그 속성명="속성 값" -->
+		<name>반장</name>
+		<age>18</age>
+	</student>
+	<student>
+		<name>청우띠</name>
+		<age>28</age>
+	</student>
+
+</student>
+
+<!-- 
+xml version 1.0 문법과 규칙을 잘 따르는 문서
+well-formed Document 라고 한다. 
+-->
