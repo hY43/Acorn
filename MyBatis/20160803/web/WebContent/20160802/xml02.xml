@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<person>
+	<man>
+		<name>희두</name>
+		<age>26</age>
+		<addrs>노원구</addrs>
+		<tel>&#x260F; &lt;010&gt;1919-9999</tel>
+		<!-- 요소의 내용은 parsed character data -->
+		<!-- &#16진수 코드 -->
+	</man>
+	<man>
+		<name>강남노는 언니</name>
+		<age>20</age>
+		<addrs>강남</addrs>
+		<tel>010-1111-2222</tel>
+		<etc>
+			<!-- unparsed Character Data: xml 파싱하지마! 일반 문자야 
+				<![CDATA[ 내용내용 ]]>
+			-->
+			<![CDATA[
+				<< 불타는 금요일의 정기를 받아...>>
+			]]>
+		</etc>
+	</man>
+</person>

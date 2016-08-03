@@ -1,0 +1,1 @@
++ 응용프로그램에서의 mybatis 사용이므로 Java Project로 생성한 mybatisEx1에서 실습할 것.

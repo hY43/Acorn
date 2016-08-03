@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE 이달의베스트셀러 [
+	<!ELEMENT 이달의베스트셀러 (베스트셀러) >
+	<!ELEMENT 베스트셀러 (제목, 저자+, 출판사, 초판일)+>
+	<!ELEMENT 제목 (#PCDATA) >
+	<!ELEMENT 저자 (#PCDATA) >
+	<!ELEMENT 출판사 (#PCDATA) >
+	<!ELEMENT 초판일 (#PCDATA) >
+	<!ATTLIST 베스트셀러 ISBN ID #REQUIRED >
+	<!ATTLIST 베스트셀러 code (A|B|C) "C" >
+	<!ATTLIST 베스트셀러 단위 CDATA #FIXED "권" >
+]>
+
+<이달의베스트셀러>
+	<베스트셀러 ISBN="A1234" code="A" 단위="권" >
+		<제목>파이브데이즈</제목>
+		<저자>더글라스캐네디</저자>
+		<출판사>밝은세상</출판사>
+		<초판일>2013년 11월 20일</초판일>
+	</베스트셀러>
+</이달의베스트셀러>

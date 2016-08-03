@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <!-- ibatis의 경우 namespace가 없어도 상관 없지만, mybatis로 바뀌면서 namespace는 필수적으로 적게 되었다.
+  값을 넣지 않더라도 선언은 해주어야한다. -->
+  <mapper namespace=" ">
+  	<select id="deptOne" parameterType="int" resultType="VO.DeptVO">
+  		SELECT * FROM dept
+  		WHERE deptno = #{deptno}
+  	</select>
+  	<select id="insertDept" parameterType="VO.DeptVO">
+  		insert into dept
+  		values(#{deptno}, #{dname}, #{loc})
+  	</select>
+  	<select id="deleteDept" parameterType="int">
+  		DELETE FROM dept
+  		WHERE deptno = #{deptno}
+  	</select>
+  	<select id="deptAll" resultType="VO.DeptVO">
+  		SELECT * FROM dept
+  	</select>
+  </mapper>
