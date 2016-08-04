@@ -1,0 +1,9 @@
+1. empList.jsp 파일에서 EMP Table 에 대한 전체 목록을 출력하여라
+2. empOne.jsp 파일에서 empno를 입력 받고 그 아래에 입력 받은 empno에 대한 사원번호, 사원명, 입사일자(년-월-일), 급여를 출력하여라
+(추가) #2 번 실습이 완료 되었다면, 검색 버튼 옆에 추가 버튼을 생성하여 input:text를 추가하는 버튼을 만들고, 여러 개의 empno를 입력 받아 입력한 empno들의 정보를 출력하여라
+(Upgrade) #2 번에서 사용한 emp.xml 파일의 select 문을 동적 쿼리문으로 수정해서 한개 Tag로 동작하도록 하시오
+3. showMemberByName.jsp 파일에서 ename과 sal을 입력 받아, 조건을 충족하는 row를 showData.jsp에 출력하여라. 
+4. empList.jsp 파일에서 사번을 클릭하면 ename, sal, job의 입력 태그가 존재하는 modify.jsp로 연결하고, 데이터를 입력한 후 변경 버튼을 클릭하면 modifyOk.jsp 파일을 통해 실제 update 작업이 이루어지도록 코드를 작성하시오.
+(Upgrade) 세가지 항목중 한개의 항목만 입력하면 입력한 항목에 대해서만 변경이 이루어지도록 코드를 작성하시오.
+5. search.jsp 파일에서 조건 검색을 작성하고 이 조건을 만족하는 결과를 result.jsp를 통해 출력하여라.
+6. insert delete

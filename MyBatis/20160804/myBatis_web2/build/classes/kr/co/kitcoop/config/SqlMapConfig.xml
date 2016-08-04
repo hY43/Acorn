@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<properties resource="kr/co/kitcoop/config/db.properties" />
+	<typeAliases>
+		<!-- 별칭 설정 -->
+		<typeAlias type="kr.co.kitcoop.vo.EmpVO" alias="evo"/>
+		<typeAlias type="kr.co.kitcoop.vo.DeptVO" alias="dvo"/>
+	</typeAliases>
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="kr/co/kitcoop/mapper/emp.xml"/>
+	</mappers>
+</configuration>

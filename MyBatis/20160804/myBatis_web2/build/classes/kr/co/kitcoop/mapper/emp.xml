@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 동적 SQL 문을 지원 -->
+<mapper namespace="kr.co.kitcoop">
+<!-- 	<select id="empSelectAll" resultType="kr.co.kitcoop.vo.EmpVO">
+		SELECT * FROM emp
+	</select>
+	resultType이 너무 길어지므로 SqlMapConfig.xml에서 Alias를 주어 아래와 같이 간단히 표현할 수 있다.
+	<select id="empSelectOne" parameterType="int" resultType="evo">
+		SELECT empno, ename, sal, to_char(hiredate,'YYYY-MM-DD') hiredate 
+		FROM emp
+		WHERE empno = #{empno}
+	</select> -->
+	<!-- 두 쿼리문의 차이는 WHERE 절의 유무 뿐이므로 if Tag를 통해 SQL 문을 통합한다. -->
+	<select id="empSelect" parameterType="evo" resultType="evo">
+		SELECT * FROM emp
+		<!-- 동적 SQL 문 -->
+		<where>
+		<if test="empno != null ">
+			<!-- 만약 empno를 입력하지 않으면 where가 나오지 않고 바로 and 절이 나오므로 쿼리문이 오류가 난다 때문에 where Tag를 제공한다. -->
+			<!-- WHERE empno = #{empno} -->
+			empno = #{empno}
+		</if>
+		<if test="sal != null">
+			and sal >= #{sal}
+		</if>
+		<if test="ename != null">
+			and ename = #{ename}
+		</if>
+		</where>
+	</select>
+	
+	<update id="updateOne" parameterType="java.util.HashMap">
+		UPDATE emp
+	<trim prefix="SET" suffixOverrides=",">
+		<if test="sal != null">sal = #{sal},</if>
+		<if test="ename != null">ename = #{ename},</if>
+		<if test="job != null">job = #{job}</if>
+	</trim>
+		WHERE empno = #{empno}
+	</update>
+	
+	<select id="searchEmployeeByName" resultType="evo">
+		SELECT empno, ename, sal, job, to_char(hiredate, 'YYYY-MM-DD') hiredate, comm, mgr, deptno
+		FROM emp
+		WHERE ename like '%' || #{ename} || '%'		
+	</select>
+	
+	<insert id="empInsert" parameterType="evo">
+		INSERT INTO emp(empno, ename, sal, job, hiredate, comm, mgr, deptno)
+		VALUES (emp_empno_seq.nextval, #{ename}, #{sal}, #{job}, sysdate, #{comm}, #{mgr}, #{deptno})
+	</insert>
+</mapper>
