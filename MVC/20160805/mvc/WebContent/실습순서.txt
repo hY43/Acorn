@@ -1,0 +1,7 @@
+(jsp01)
+1. jspincludeTest1.jsp a1, 
+2. el01.jsp el02.jsp
+3. 이클립스 톰캣 종료 후, 톰캣 폴더에서 startup.bat 실행 후 웹브라우저로 localhost:8080 실행
+-> example - jsp example - basic arithmetic
+4. el03.jsp에서 체크한 것 el04에 출력
+5. el05.jsp의 내장객체에 저장한 값을 el06.jsp에 출력

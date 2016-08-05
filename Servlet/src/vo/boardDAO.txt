@@ -1,0 +1,43 @@
+create table board
+(
+	bno	number(10),
+	title	varchar2(20),
+	writer	varchar2(20),
+	contents	varchar2(1000),
+	hits	number(10),
+	regDate	date,
+	status	number(10)
+);
+
+create sequence board_bno_seq
+start with 1
+increment by 1
+nocache
+nocycle;
+
+insert into board
+values( board_bno_seq.nextval, 'ÇªÇÏÇÏ', 'sangwon', '¾È´¨¾È´¨', 0, sysdate, 1);
+insert into board
+values( board_bno_seq.nextval, '°Ô½Ã±Û2', 'sangwon', '¾È´¨¾È´¨2', 0, sysdate, 1);
+insert into board
+values( board_bno_seq.nextval, '°Ô½Ã±Û3', 'sangwon', '¾È´¨¾È´¨3', 0, sysdate, 1);
+insert into board
+values( board_bno_seq.nextval, '°Ô½Ã±Û4', 'sangwon', '¾È´¨¾È´¨4', 0, sysdate, 1);
+insert into board
+values( board_bno_seq.nextval, '°Ô½Ã±Û5', 'sangwon', '¾È´¨¾È´¨5', 0, sysdate, 1);
+insert into board
+values( board_bno_seq.nextval, '°Ô½Ã±Û6', 'sangwon', '¾È´¨¾È´¨6', 0, sysdate, 1);
+insert into board
+values( board_bno_seq.nextval, '°Ô½Ã±Û7', 'sangwon', '¾È´¨¾È´¨7', 0, sysdate, 1);
+insert into board
+values( board_bno_seq.nextval, '°Ô½Ã±Û8', 'sangwon', '¾È´¨¾È´¨8', 0, sysdate, 1);
+insert into board
+values( board_bno_seq.nextval, '°Ô½Ã±Û9', 'sangwon', '¾È´¨¾È´¨9', 0, sysdate, 1);
+
+
+alter table board
+add constraint board_bno_pk	primary key(bno);
+
+commit;
+
+
