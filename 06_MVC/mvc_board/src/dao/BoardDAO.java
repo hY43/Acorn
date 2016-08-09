@@ -89,4 +89,58 @@ public class BoardDAO {
 			e.printStackTrace();
 		}
 	}
+
+	public void updateOne(int bno, String writer, String title, String contents) {
+		sb.setLength(0);
+		sb.append("UPDATE board ");
+		sb.append("SET writer=?, title=?, contents=? ");
+		sb.append("WHERE bno = ?");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setString(1, writer);
+			pstmt.setString(2, title);
+			pstmt.setString(3, contents);
+			pstmt.setInt(4, bno);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void raiseHits(int bno){
+		sb.setLength(0);
+		sb.append("UPDATE board ");
+		sb.append("SET hits=hits+1 ");
+		sb.append("WHERE bno = ?");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, bno);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	public void deleteOne(int bno) {
+		sb.setLength(0);
+		sb.append("DELETE FROM board ");
+		sb.append("WHERE bno = ?");
+		
+		try {
+			pstmt = conn.prepareStatement(sb.toString());
+			pstmt.setInt(1, bno);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

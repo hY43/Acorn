@@ -20,7 +20,7 @@
 </style>
 </head>
 <body>
-	<h1>detail.jsp</h1>
+	<h1>modifyForm.jsp</h1>
 	<!--
    board.do?cmd=writeOk
    writer, title, contents 전송
@@ -28,22 +28,21 @@
    ListCommand()호출
    -->
 	<div class="wrap">
-
-		<div class="writeTop">
-			<input type="hidden" name="cmd" value="modifyForm" /> <label
-				for="writer">작성자</label> <input type="text" name="writer"
-				id="writer" value="${vo.writer }" readonly /> <label for="title">제목</label>
-			<input type="text" name="title" id="title" value="${vo.title }"	readonly />
-		</div>
-		<div class="writeBottom">
-			<textarea name="contents" id="contents" rows="10" cols="80" readonly>${vo.contents }</textarea>
-		</div>
-		<div class="button">
-			<a href="board.do?cmd=list"><input type="button" value="목록" /></a> <a
-				href="board.do?cmd=modifyForm&bno=${vo.bno }"><input type="button" value="수정" /></a> <a href="board.do?cmd=deleteOk"><input
-				type="button" value="삭제" /></a>
-		</div>
-
+		<form action="board.do" method="post">
+			<div class="writeTop">
+				<label for="writer">작성자</label> 
+				<input type="hidden" name="bno" value="${vo.bno }" />
+				<input type="hidden" name="cmd" value="modifyOk"/>
+				<input type="text" name="writer" id="writer" value="${vo.writer }"/> 
+				<label for="title">제목</label> 
+				<input type="text" name="title" id="title" value="${vo.title }"/>
+			</div>
+			<div class="writeBottom">
+				<textarea name="contents" id="contents" rows="10" cols="80">${vo.contents }</textarea>
+				<a href="board.do?cmd=list"><button>목록가기</button></a>
+				<button type=submit>수정</button>
+			</div>
+		</form>
 	</div>
 </body>
 </html>
