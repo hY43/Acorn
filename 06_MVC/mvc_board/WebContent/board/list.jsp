@@ -38,6 +38,12 @@ $(function(){
 				<col width="10%"/>
 			</colgroup>
 			<tr>
+				<td colspan="7">
+				<a href="board.do?cmd=writeForm"><input type="button" value="글쓰기" /></a>
+				<input type="submit" value="삭제" />
+				</td>
+			</tr>
+			<tr>
 				<th><input type="checkbox" name="selCheckAll" id="selCheckAll"/></th>
 				<th>번호</th>
 				<th>작성자</th>
@@ -70,10 +76,18 @@ $(function(){
 					<%@ include file="detail.jsp" %>
 				</tr> --%>
 			</c:forEach>
+			
 			<tr>
-				<td colspan="7">
-				<a href="board.do?cmd=writeForm"><input type="button" value="글쓰기" /></a>
-				<input type="submit" value="삭제" />
+				<td colspan=6>
+					<c:if test="${pageVO.pre }">
+						<a href="board.do?currentPage=${pageVO.currentPage-5}">[이전]</a>
+					</c:if>
+					<c:forEach var="i" begin="${pageVO.startPage}"	end="${pageVO.endPage}">
+     					 <a href="board.do?currentPage=${i}">${i} &nbsp;&nbsp;&nbsp;</a>
+   					</c:forEach>
+   					<c:if test="${pageVO.next }">
+						<a href="board.do?currentPage=${pageVO.currentPage+5}">[다음]</a>
+					</c:if>
 				</td>
 			</tr>
 		</table>
