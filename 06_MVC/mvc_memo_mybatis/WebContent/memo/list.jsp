@@ -7,16 +7,12 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
-   
-   $(document).ready(function(){
-/*       $('.modifyBtn').on('click', function(){
-         $('.commentForm').toggle();
-      }); */
-      
-   });
-   function modifyFun(obj){
-	   console.dir(obj);
-   }
+	$(document).ready(function() {
+		$('.modifyBtn').on('click', function() {
+			var $li = $(this).parents('li');
+			$li.find('.commentForm').toggle();
+		});
+	});
 </script>
 <style type="text/css">
    *{margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; color: #a1a2a3;}
@@ -89,7 +85,7 @@
                   <div class="view">
                      <textarea id="comment_modify" name="comment_modify"></textarea>
                      <div class="submit">
-                        <button type="button" class="modifyOkBtn btn_blue" onclick="modifyFun(this)">수정</button>
+                        <button type="button" class="modifyOkBtn btn_blue">수정</button>
                         <button type="button" class="cancelBtn btn_red">취소</button>
                      </div>
                   </div>               
