@@ -1,11 +1,11 @@
 ﻿create table board
 (
-	bno	number(10),
+	no	number(10),
 	title	varchar2(20),
 	writer	varchar2(20),
 	contents	varchar2(1000),
 	hits	number(10),
-	regDate	date,
+	wdate	date,
 	status	number(10)
 );
 

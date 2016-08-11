@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace=" ">
+	<select id="selectAll" parameterType="vo.StartEndVO" resultType="vo.BoardVO">
+		SELECT BNO, WRITER, TITLE, CONTENTS, HITS, regdate, STATUS 
+		FROM (SELECT ROWNUM RN, BNO, WRITER, TITLE, CONTENTS,HITS, regdate, STATUS 
+		FROM (SELECT * FROM board ORDER BY regdate desc))
+		WHERE RN &gt;= #{start} AND RN &lt;= #{end} 
+	</select>
+	
+	<select id="selectOne" parameterType="int" resultType="vo.BoardVO">
+		SELECT bno, writer, title, contents, hits, regdate, status
+		FROM board
+		WHERE bno = #{bno}
+	</select>
+	
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(*) CNT FROM board
+	</select>
+	
+	<update id="raiseHits" parameterType="int">
+		UPDATE board
+		SET hits = hits+1
+		WHERE bno = #{bno}
+	</update>
+	
+	<update id="updateOne" parameterType="vo.BoardVO">
+		UPDATE board
+		SET writer = #{writer}, title=#{title}, contents=#{contents}
+		WHERE bno = #{bno}
+	</update>
+	
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM board
+		WHERE bno = #{bno}
+	</delete>
+
+	<delete id="deleteList" parameterType="hashmap">
+		DELETE FROM board
+		<where>
+			bno in
+			<foreach collection="list" item="m" open="(" close=")" separator=",">
+				#{m}
+			</foreach>
+		</where>
+	</delete>
+	
+	<insert id="insertOne" parameterType="vo.BoardVO">
+		INSERT INTO board(bno, writer, title, contents, hits, regdate, status)
+		VALUES(board_bno_seq.nextval, #{writer}, #{title}, #{contents}, 0, sysdate, 1)
+	</insert>
+</mapper>

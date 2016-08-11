@@ -41,12 +41,12 @@
 					<div class="commentTop">
 						<strong class="name">${vo.writer }</strong> <span class="date">${vo.wdate }</span>
 						<div class="button">
-							<button class="modifyBtn btn_blue">수정</button>
+							<a href="memo.do?cmd=modifyForm"></a><button class="modifyBtn btn_blue">수정</button>
 							<button class="deleteBtn btn_red">삭제</button>
 						</div>
 					</div>
 
-					<div class="comment"></div>
+					<div class="comment">${vo.contents }</div>
 				</li>
 			</c:forEach>
 		</ul>
