@@ -6,13 +6,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document).ready(function() {
 		$('.modifyBtn').on('click', function() {
+ 	        $('.commentForm').hide();
 			var $li = $(this).parents('li');
+			$li.find('.comment').hide();
 			$li.find('.commentForm').toggle();
 		});
 	});
+</script> -->
+<script type="text/javascript">
+   $(document).ready(function(){
+
+      $('.modifyBtn').on('click', function(){
+         var $li = $(this).parents('li');
+
+         $('.commentForm').hide();
+         $('.comment').show();
+         
+         $li.find('.comment').hide();
+         $li.find('.commentForm').toggle();
+         
+      });
+      $('.cancelBtn').on('click', function(){
+         $('.commentForm').hide();
+         $('.comment').show();
+      });
+   });
 </script>
 <style type="text/css">
    *{margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; color: #a1a2a3;}
@@ -55,6 +76,11 @@
    .button .btn_blue:hover{color: #fff; background: #1689e2; border: 1px solid #1689e2;}
    .button .btn_red{display: inline-block; float: left; line-height: 1; margin-left: -1px; padding: 5px 5px; font-size: 12px; color: #e61717; background: #fff; border: 1px solid #ccc;}
    .button .btn_red:hover{color: #fff; background: #e61717; border: 1px solid #e61717;}
+   
+   #numbering{
+       border: 1px solid #ccc;
+       text-align: center;
+   }
 </style>
 </head>
 <body>
@@ -68,7 +94,7 @@
             <span class="date">${vo.wdate}</span>
             <div class="button">
                <button class="modifyBtn btn_blue">수정</button>
-               <button class="deleteBtn btn_red">삭제</button>
+               <a href="memo.do?cmd=delete"><button class="deleteBtn btn_red">삭제</button></a>
             </div>
          </div>
          <!-- 댓글 수정 Start -->
@@ -83,9 +109,9 @@
                      <input id="comment_password" name="comment_password" value="" type="password">
                   </div>
                   <div class="view">
-                     <textarea id="comment_modify" name="comment_modify"></textarea>
+                     <textarea id="comment_modify" name="comment_modify">${vo.contents}</textarea>
                      <div class="submit">
-                        <button type="button" class="modifyOkBtn btn_blue">수정</button>
+                        <a href="memo.do?cmd=modifyOk&pw=${vo.pw }"><button type="button" class="modifyOkBtn btn_blue">수정</button></a>
                         <button type="button" class="cancelBtn btn_red">취소</button>
                      </div>
                   </div>               
@@ -99,8 +125,27 @@
       </li>
       </c:forEach>
    </ul>
-   
-   <form id="commentWriteForm" class="commenteWriteForm" name="" action="" method="post">
+
+		<div class="commentTop" id="numbering">
+<%-- 			<span class="no">${vo.no}</span> <strong class="name">${vo.writer}</strong>
+			<span class="date">${vo.wdate}</span>
+			<div class="button">
+				<button class="modifyBtn btn_blue">수정</button>
+				<button class="deleteBtn btn_red">삭제</button>
+			</div> --%>
+								<c:if test="${pageVO.pre }">
+						<a href="memo.do?currentPage=${pageVO.currentPage-5}">[이전]</a>
+					</c:if>
+					<c:forEach var="i" begin="${pageVO.startPage}"	end="${pageVO.endPage}">
+     					 <a href="memo.do?currentPage=${i}">${i} &nbsp;&nbsp;&nbsp;</a>
+   					</c:forEach>
+   					<c:if test="${pageVO.next }">
+						<a href="memo.do?currentPage=${pageVO.currentPage+5}">[다음]</a>
+					</c:if>
+		</div>
+
+
+		<form id="commentWriteForm" class="commenteWriteForm" name="" action="" method="post">
       <!-- 댓글권한 있음 -->
       <div class="">
          <fieldset>
@@ -110,15 +155,16 @@
                   <strong>댓글달기</strong>
                </div>
                <div class="commentWriteTop2">
+               	  <input type="hidden" name="cmd" value="writeOk"/>
                   <strong>이름 :</strong>
-                  <input id="comment_name" name="comment_name" class="inputTypeText" value="" type="text" />
+                  <input id="comment_name" name="writer" class="inputTypeText" value="" type="text" />
                   <strong>비밀번호 :</strong>
-                  <input id="comment_password" name="comment_password" value="" type="password" />
+                  <input id="comment_password" name="pw" value="" type="password" />
                </div>
             </div>
             <div class="view">
-               <textarea id="comment" name="comment"></textarea>
-               <button type="button" class="writeBtn">글쓰기</button>
+               <textarea id="comment" name="contents"></textarea>
+               <input type="submit" class="writeBtn" value="글쓰기" />
             </div>
          </fieldset>
       </div>

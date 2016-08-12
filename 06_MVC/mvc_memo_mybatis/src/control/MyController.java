@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
 import action.ListAction;
-import action.WriteFormAction;
 import action.WriteOkAction;
 
 @WebServlet("/memo.do")
@@ -41,8 +40,6 @@ public class MyController extends HttpServlet{
 		
 		if(cmd == null || cmd.equals("list")){
 			action = new ListAction();
-		}else if(cmd.equals("writeForm")){
-			action = new WriteFormAction();
 		}else if(cmd.equals("writeOk")){
 			action = new WriteOkAction();
 		}

@@ -10,6 +10,7 @@ public class MemoVO {
 	private String pw;
 	
 	/*Constructor*/
+	public MemoVO(){}
 	public MemoVO(int no, String writer, String contents, String wdate, int status, String pw) {
 		super();
 		this.no = no;
