@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import action.Action;
+import action.DeleteOkAction;
 import action.ListAction;
+import action.ModyfyOkAction;
 import action.WriteOkAction;
 
 @WebServlet("/memo.do")
@@ -42,6 +44,10 @@ public class MyController extends HttpServlet{
 			action = new ListAction();
 		}else if(cmd.equals("writeOk")){
 			action = new WriteOkAction();
+		}else if(cmd.equals("deleteOk")){
+			action = new DeleteOkAction();
+		}else if(cmd.equals("modifyOk")){
+			action = new ModyfyOkAction();
 		}
 		url = action.execute(req, resp);
 		RequestDispatcher rd = req.getRequestDispatcher(url);

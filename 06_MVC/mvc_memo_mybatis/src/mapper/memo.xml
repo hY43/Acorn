@@ -11,7 +11,27 @@
 		WHERE RN &gt;= #{start} AND RN &lt;= #{end} 
 </select>
 
+<insert id="insertOne" parameterType="vo.MemoVO">
+		INSERT INTO memo
+		VALUES(memo_no_seq.nextval, #{writer}, #{contents}, sysdate, 1, #{pw})
+</insert>
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(*) CNT FROM memo
 	</select>
+	
+	<select id="searchPw" parameterType="int" resultType="String">
+		SELECT pw FROM memo
+		WHERE no = #{no}
+	</select>
+	
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM memo
+		WHERE no = #{no}
+	</delete>
+	
+	<update id="updateOne" parameterType="vo.MemoVO">
+		UPDATE memo
+		SET contents = #{contents}
+		WHERE no = #{no}
+	</update>
 </mapper>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -25,7 +26,6 @@ public class MemoDAO {
 	public MemoDAO(){
 		factory = ConnectionManager.getInstance().getFactory();
 	}
-	
 	public List<MemoVO> selectAll(int start, int end) {
 		SqlSession ss = factory.openSession(true);
 		StartEndVO se = new StartEndVO(start, end);
@@ -34,21 +34,14 @@ public class MemoDAO {
 		return list;
 	}
 	
-	public void insertOne(String writer, String contents, String pw) {
-		sb.setLength(0);
-		sb.append("INSERT INTO memo(no, writer, contents, wdate, status, pw) ");
-		sb.append("VALUES(memo_no_seq.nextval, ?, ?, sysdate, 1, ?) ");
-		
-		try {
-			pstmt = conn.prepareStatement(sb.toString());
-			pstmt.setString(1, writer);
-			pstmt.setString(2, contents);
-			pstmt.setString(3, pw);
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void insertOne(String writer, String contents, String pw){
+		SqlSession ss = factory.openSession(true);
+		MemoVO vo = new MemoVO();
+		vo.setWriter(writer);
+		vo.setContents(contents);
+		vo.setPw(pw);
+		ss.insert("insertOne", vo);
+		ss.close();
 	}
 	
 	//전체 데이터가 몇건인지 알아오기
@@ -58,5 +51,27 @@ public class MemoDAO {
 		ss.close();
 		return count;
 	}// getTotal() end
+
+	public String searchPw(int no) {
+		SqlSession ss = factory.openSession(true);
+		String pw = ss.selectOne("searchPw", no);
+		ss.close();
+		return pw;
+	}
+
+	public void deleteOne(int no) {
+		SqlSession ss = factory.openSession(true);
+		ss.delete("deleteOne", no);
+		ss.close();
+	}
+
+	public void updateOne(int no, String contents) {
+		SqlSession ss = factory.openSession(true);
+		MemoVO vo = new MemoVO();
+		vo.setNo(no);
+		vo.setContents(contents);
+		ss.update("updateOne",vo);
+		ss.close();
+	}
 
 }
