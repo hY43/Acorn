@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<bean id="collection" class="kr.co.test.app.CollectionImple">
+	<constructor-arg name="list">
+		<list>
+			<value>파리잡는 희두몬</value>
+			<value>지각대장 초X</value>
+			<value>휴가 다녀온 반장</value>
+		</list>
+	</constructor-arg>
+	<constructor-arg name="map">
+		<map>
+			<entry>
+				<key>
+					<value>희정</value>
+				</key>
+				<value>freshrice</value>
+			</entry>
+			<entry>
+				<key>
+					<value>포켓몬스터마스터</value>
+				</key>
+				<value>지우</value>
+			</entry>
+		</map>
+	</constructor-arg>
+</bean>
+
+
+</beans>
