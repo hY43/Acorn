@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="printer" class="kr.co.test.app3.LaserPrinter">
+	<!-- constructor DI -->
+	<!--<constructor-arg name="red" value="90"></constructor-arg>
+	<constructor-arg name="blue" value="80"></constructor-arg>
+	<constructor-arg name="green" value="60"></constructor-arg> -->
+	<!-- Setter DI -->
+	<!-- <property name="red" value="100"></property>
+	<property name="blue" value="100"></property>
+	<property name="green" value="100"></property> -->
+	
+</bean>
+</beans>
