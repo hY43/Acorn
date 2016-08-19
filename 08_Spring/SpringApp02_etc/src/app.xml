@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 
+CoffeeImple coffee = new CoffeeImple();
+coffee.type = "술";
+과 같은 효과를 내고 싶다.
+-->
+<bean id="coffee" class="spring_app2.MachineCoffee" p:type="아메리카노">
+</bean>
+</beans>

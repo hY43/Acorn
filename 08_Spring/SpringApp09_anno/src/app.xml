@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"></bean>
+<!-- 의존성을 Annotation을 통해 자동으로 등록한다. -->
+
+<bean id="nt1" name="nt1" class="kr.co.test.app.NowTime"></bean>
+<bean id="nt2" name="nt2" class="kr.co.test.app.NowTime"></bean>
+
+
+<bean id="greeting" class="kr.co.test.app.GreetingImple">
+	<!-- contructor DI -->
+	<!-- <constructor-arg name = "nt" ref="nt"></constructor-arg>
+	<constructor-arg name = "msg" value="안녕안녕"></constructor-arg> -->
+	<!-- Setter DI -->
+<!-- 	<property name="nt" ref="nt"></property>
+	<property name="msg" value="안녕"></property> -->
+	
+	<!-- Annotation 등록 후에는 아래와 같이만 적어주면 NowTime에 대해서는 알아서 적용해준다. -->
+	<property name="msg" value="안녕"></property>
+</bean>
+</beans>
