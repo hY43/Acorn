@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="app" class="kr.co.test.app.MessageImple2" p:name="다붙어라" init-method="init" destroy-method="destroy">
+<!-- init-method: 초기화시킬때 실행할 Method
+destory: 종료할때 실행할 Method -->
+	<!-- <property name="name"></property> -->
+</bean>
+</beans>
