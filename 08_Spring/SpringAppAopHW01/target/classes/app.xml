@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+<bean id="hijack" class="spring_app_hw_app1.HijackGugu" p:dan="3"></bean>
+<bean id="hello" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="target" ref="imple"></property>
+	<property name="interceptorNames">
+		<list>
+			<value>hijack</value>
+		</list>
+	</property>
+</bean>
+
+
+<bean id="imple" class="spring_app_hw_app1.HelloImple" p:name="sangwon"></bean>
+</beans>

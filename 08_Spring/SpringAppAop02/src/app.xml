@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean id="advice" class="spring_app_aop2.AfterInterceptorAdvice"></bean>
+
+<bean id="cs" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="target" ref="imples"></property>
+	<property name="interceptorNames">
+		<value>advice</value>
+	</property>
+</bean>
+<bean id="imples" class="spring_app_aop2.CustomerServiceImple" c:name="sangwon" c:email="sangwon@acorn.ac.kr"></bean>
+</beans>
