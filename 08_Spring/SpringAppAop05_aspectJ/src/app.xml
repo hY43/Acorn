@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+<bean id="ck" class="kr.co.test.app.aop.CheckTime"></bean>
+<!-- aop 설정 -->
+<aop:config>
+	<!-- 새로운 aspect 지정 -->
+	<aop:aspect id="checkAspect" ref="ck">
+		<!-- 정확히 어디에 지정할 것인지 명시 -->
+		<!-- checkTime을 적용하고자 하는데 어떤 시기에 적용할것인지(expression) printName이라는 Method가 오면 적용해 -->
+		<aop:pointcut expression="execution (public * printName(..))" id="checkPointcut"/>
+		<aop:around method="logAround" pointcut-ref="checkPointcut"/>
+	</aop:aspect>
+</aop:config>
+
+<bean id="cs" class="kr.co.test.app.aop.CustomerServiceImple">
+	<property name="name" value="홍길동"></property>
+	<property name="email" value="hong@gmail.com"></property>
+</bean>
+</beans>

@@ -6,7 +6,9 @@
 <bean id="now" class="kr.co.test.app.NowTime"></bean>
 
 <bean id = "time" class = "kr.co.test.app.HelloImple">
+<!-- Constructor DI -->
 <constructor-arg ref="now"></constructor-arg>
+<!-- 참조 값이면 ref, 값이라면 value -->
 </bean>
 
 </beans>

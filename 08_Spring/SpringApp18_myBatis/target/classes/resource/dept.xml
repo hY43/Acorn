@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="kr.co.test.app">
+  	<select id="selectAll" resultType="dvo">
+  		SELECT deptno, dname, loc
+  		FROM dept
+  	</select>
+  	<select id="selectOne" parameterType="int" resultType="dvo">
+  		SELECT deptno, dname, loc
+  		FROM dept
+  		WHERE deptno = #{deptno}
+  	</select>
+  	<insert id="insertOne" parameterType="dvo">
+  		INSERT INTO dept(deptno, dname, loc)
+  		VALUES(dept_deptno_seq.nextval, #{dname}, #{loc})
+  	</insert>
+  	<update id="updateOne" parameterType="dvo">
+  		UPDATE dept
+  		SET dname = #{dname}, loc = #{loc}
+  		WHERE deptno=#{deptno}
+  	</update>
+  	<delete id="deleteOne" parameterType="int">
+  		DELETE FROM dept
+  		WHERE deptno = #{deptno}
+  	</delete>
+  </mapper>

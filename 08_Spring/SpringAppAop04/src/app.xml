@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean id="ck" class="kr.co.test.app.aop.CheckTime"></bean>
+<bean id="cs" class="org.springframework.aop.framework.ProxyFactoryBean">
+	<property name="target" ref="imple"></property>
+	<property name="interceptorNames">
+		<value>ck</value>
+	</property>
+</bean>
+<bean id="imple" class="kr.co.test.app.aop.CustomerServiceImple">
+	<property name="name" value="오늘졸업"></property>
+	<property name="email" value="재상씨 연락두절"></property>
+</bean>
+</beans>
