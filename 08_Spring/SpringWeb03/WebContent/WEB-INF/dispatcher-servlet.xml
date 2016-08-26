@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- handler mapping -->
+<bean id="beanNameUrlHandlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+<!-- viewresolver -->
+<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<property name="prefix" value="/WEB-INF/view/"></property>
+	<property name="suffix" value=".jsp"></property>
+</bean>
+
+<bean id="/hello.action" class="kr.co.test.web.HelloController"></bean>
+<bean id="/welcome.action" class="kr.co.test.web.WelcomeController">
+	<property name="name" value="sangwon"></property>
+</bean>
+<bean id="/jpwelcome.action" class="kr.co.test.web.WelcomeJPController">
+	<property name="name" value="sangwon"></property>
+</bean>
+</beans>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>${msg }</h1>
-</body>h
+	<h1>jpwelcome.jsp</h1>
+	${msg }
+</body>
 </html>
