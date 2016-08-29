@@ -1,0 +1,11 @@
+http://localhost:8080/SpringWeb07_HW/info.nhn
+
+web.xml
+kr.co.test.app.web.control.InfoController.java
+webapp.xml
+/jsp/info.jsp
+
+출력결과
+당신의 ip는 192.168.0.42입니다.
+오늘은 Monday
+현재 시간은 20156.08.29 :13:05:22 입니다.
