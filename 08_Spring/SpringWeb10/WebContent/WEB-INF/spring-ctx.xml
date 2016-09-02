@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+<!-- base-package 하위에 있는 Controller 자동 등록 -->
+<context:component-scan base-package="kr.co.*"></context:component-scan>
+
+<mvc:annotation-driven />
+<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<property name="uploadTempDir" value="/WEB-INF/view/"></property>
+	<property name="maxUploadSize" value="104857600"><!-- 최대 100MB업로드 할 수 있도록 --></property>
+</bean>
+						<!-- hello.do라는 요청이 오면 hello.jsp로 연결 -->
+<mvc:view-controller path="/hello.do" view-name="hello" />
+
+<mvc:view-resolvers>
+	<mvc:jsp prefix="/WEB-INF/view/" suffix=".jsp" />
+</mvc:view-resolvers>
+
+</beans>
