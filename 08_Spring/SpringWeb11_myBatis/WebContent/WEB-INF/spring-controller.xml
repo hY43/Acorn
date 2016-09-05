@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	<!-- Controller 자동 등록 -->
+	<context:component-scan base-package="kr.co.*" />
+	<!-- db 정보 -->
+	<bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/db.properties" />
+	</bean>
+	<!-- db 연결 객체 -->
+	<bean id="basicDataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+		<!-- Connection Pool의 초기 Connection 수를 3개로 설정 -->
+		<property name="initialSize" value="3" />
+		<!-- Connection Pool의 최대 Connection 수는 10개로 설정 -->
+		<property name="maxTotal" value="10" /> 
+		<!-- Connection Pool의 최소 Connection 수를 5개로 설정 -->
+		<property name="minIdle" value="5" />
+	</bean>
+	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="basicDataSource" />
+		<property name="configLocation" value="/WEB-INF/sqlMapConfig.xml" />
+	</bean>
+	<!-- db Connection Session 객체 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactoryBean"></constructor-arg>
+	</bean>
+	<bean id="deptOracleDAO" class="kr.co.test.web.dao.DeptOracleDAO">
+		<property name="ss" ref="sqlSessionTemplate"></property>
+	</bean>
+</beans>
