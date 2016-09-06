@@ -17,5 +17,10 @@ public class DeptOracleDAO implements Dao{
 	public List<DeptDTO> selectAll() {
 		return ss.selectList("kr.co.test.dept.selectAll");
 	}
+
+	@Override
+	public void insertOne(DeptDTO dto) {
+		ss.insert("kr.co.test.dept.insertOne", dto);
+	}
 	
 }

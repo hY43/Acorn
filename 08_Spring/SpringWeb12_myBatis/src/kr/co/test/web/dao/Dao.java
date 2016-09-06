@@ -6,4 +6,6 @@ import kr.co.test.web.dto.EmpDTO;
 
 public interface Dao {
 	public List<EmpDTO> selectAll();
+
+	public void insertOne(EmpDTO dto);
 }

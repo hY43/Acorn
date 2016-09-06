@@ -6,4 +6,8 @@
   <select id="selectAll" resultType="empdto">
   	SELECT * FROM EMP
   </select>
+  <insert id="insertOne" parameterType="empdto">
+  	INSERT INTO emp (empno, ename, deptno)
+  	VALUES(#{empno}, #{ename}, #{deptno})
+  </insert>
   </mapper>

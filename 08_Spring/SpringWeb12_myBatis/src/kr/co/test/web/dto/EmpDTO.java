@@ -11,6 +11,13 @@ public class EmpDTO {
 	private int deptno;
 	
 	public EmpDTO(){}
+	
+	public EmpDTO(int empno, String ename, int deptno) {
+		this.empno = empno;
+		this.ename = ename;
+		this.deptno = deptno;
+	}
+
 	public EmpDTO(int empno, String ename, String job, int mgr, String hiredate, int sal, int comm, int deptno) {
 		super();
 		this.empno = empno;

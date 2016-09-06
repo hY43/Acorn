@@ -10,5 +10,6 @@
 <mvc:view-resolvers>
 	<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp"/>
 </mvc:view-resolvers>
-
+	<mvc:default-servlet-handler/> 
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
 </beans>

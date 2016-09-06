@@ -7,4 +7,8 @@
 		SELECT deptno, dname, loc
 		FROM dept
 	</select>
+	<insert id="insertOne" parameterType="deptdto">
+		INSERT INTO dept (deptno, dname, loc)
+		VALUES(#{deptno}, #{dname}, #{loc})
+	</insert>
 </mapper>

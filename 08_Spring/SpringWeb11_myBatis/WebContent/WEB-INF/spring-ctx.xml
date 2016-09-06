@@ -11,4 +11,7 @@
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
 	</mvc:view-resolvers>
+	<!-- dispatcherServlet로 해석해보고 그 파일이 없으면 해석하지 말고 적힌 그대로의 경로를 찾아갈 것. -->
+	<mvc:default-servlet-handler/> 
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
 </beans>
