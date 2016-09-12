@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.test.board">
+	<select id="getTotal" resultType="int">
+		SELECT count(*) cnt
+		FROM board
+	</select>
+	<select id="total" resultType="bdto" parameterType="se">
+		SELECT rn, no, writer, title, contents, hits, wdate, status
+		FROM (SELECT rownum rn, no, writer, title, contents, hits, to_char(wdate, 'yyyy/mm/dd') wdate, status FROM board ORDER BY wdate DESC)
+		WHERE rn &gt; #{startNo} AND rn &lt; #{endNo}
+	</select>
+
+	<select id="getOne" parameterType="int" resultType="bdto">
+		SELECT no, writer, title, contents, hits, to_char(wdate,'yyyy/mm/dd') wdate, status
+		FROM board
+		WHERE no = #{no}
+	</select>
+
+	<insert id="add" parameterType="bdto">
+		INSERT INTO board
+		VALUES(board_no_seq.nextval, #{writer}, #{title}, #{contents}, 0, sysdate, 0)
+	</insert>
+	
+	<update id="updateOne" parameterType="bdto">
+		UPDATE board
+		SET contents = #{contents}
+		WHERE no = #{no}
+	</update>
+	
+	<delete id="deleteOne" parameterType="int">
+		DELETE FROM board
+		WHERE no = #{no}
+	</delete>
+	
+</mapper>
